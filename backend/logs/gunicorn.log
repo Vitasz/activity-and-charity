@@ -1,0 +1,651 @@
+
+[2023-09-30 14:48:02 +0300] [1008862] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 4
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/snese/hackatons/kokos/activity-and-charity/backend
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1003
+  group: 1003
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn.log
+  loglevel: DEBUG
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: wsgi:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f96e5de4220>
+  on_reload: <function OnReload.on_reload at 0x7f96e5de4360>
+  when_ready: <function WhenReady.when_ready at 0x7f96e5de44a0>
+  pre_fork: <function Prefork.pre_fork at 0x7f96e5de45e0>
+  post_fork: <function Postfork.post_fork at 0x7f96e5de4720>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f96e5de4860>
+  worker_int: <function WorkerInt.worker_int at 0x7f96e5de49a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f96e5de4ae0>
+  pre_exec: <function PreExec.pre_exec at 0x7f96e5de4c20>
+  pre_request: <function PreRequest.pre_request at 0x7f96e5de4d60>
+  post_request: <function PostRequest.post_request at 0x7f96e5de4e00>
+  child_exit: <function ChildExit.child_exit at 0x7f96e5de4f40>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f96e5de5080>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f96e5de51c0>
+  on_exit: <function OnExit.on_exit at 0x7f96e5de5300>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f96e5de54e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2023-09-30 14:48:02 +0300] [1008862] [INFO] Starting gunicorn 21.2.0
+[2023-09-30 14:48:02 +0300] [1008862] [DEBUG] Arbiter booted
+[2023-09-30 14:48:02 +0300] [1008862] [INFO] Listening at: http://0.0.0.0:8000 (1008862)
+[2023-09-30 14:48:02 +0300] [1008862] [INFO] Using worker: sync
+[2023-09-30 14:48:02 +0300] [1008863] [INFO] Booting worker with pid: 1008863
+[2023-09-30 14:48:02 +0300] [1008864] [INFO] Booting worker with pid: 1008864
+[2023-09-30 14:48:02 +0300] [1008865] [INFO] Booting worker with pid: 1008865
+[2023-09-30 14:48:03 +0300] [1008866] [INFO] Booting worker with pid: 1008866
+[2023-09-30 14:48:03 +0300] [1008862] [DEBUG] 4 workers
+[2023-09-30 17:01:18 +0300] [1008862] [INFO] Handling signal: hup
+[2023-09-30 17:01:18 +0300] [1008862] [INFO] Hang up: Master
+[2023-09-30 17:01:18 +0300] [1008862] [ERROR] Worker (pid:1008863) was sent SIGHUP!
+[2023-09-30 17:01:18 +0300] [1008862] [ERROR] Worker (pid:1008865) was sent SIGHUP!
+[2023-09-30 17:01:18 +0300] [1008862] [ERROR] Worker (pid:1008866) was sent SIGHUP!
+[2023-09-30 17:01:18 +0300] [1008862] [ERROR] Worker (pid:1008864) was sent SIGHUP!
+[2023-09-30 17:01:18 +0300] [1008862] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 4
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/snese/hackatons/kokos/activity-and-charity/backend
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1003
+  group: 1003
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn.log
+  loglevel: DEBUG
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: wsgi:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f96e5de4220>
+  on_reload: <function OnReload.on_reload at 0x7f96e5de4360>
+  when_ready: <function WhenReady.when_ready at 0x7f96e5de44a0>
+  pre_fork: <function Prefork.pre_fork at 0x7f96e5de45e0>
+  post_fork: <function Postfork.post_fork at 0x7f96e5de4720>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f96e5de4860>
+  worker_int: <function WorkerInt.worker_int at 0x7f96e5de49a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f96e5de4ae0>
+  pre_exec: <function PreExec.pre_exec at 0x7f96e5de4c20>
+  pre_request: <function PreRequest.pre_request at 0x7f96e5de4d60>
+  post_request: <function PostRequest.post_request at 0x7f96e5de4e00>
+  child_exit: <function ChildExit.child_exit at 0x7f96e5de4f40>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f96e5de5080>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f96e5de51c0>
+  on_exit: <function OnExit.on_exit at 0x7f96e5de5300>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f96e5de54e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2023-09-30 17:01:18 +0300] [1009601] [INFO] Booting worker with pid: 1009601
+[2023-09-30 17:01:18 +0300] [1009602] [INFO] Booting worker with pid: 1009602
+[2023-09-30 17:01:18 +0300] [1009600] [INFO] Booting worker with pid: 1009600
+[2023-09-30 17:01:18 +0300] [1009603] [INFO] Booting worker with pid: 1009603
+[2023-09-30 17:19:21 +0300] [1009602] [DEBUG] GET /LoginSupervisor
+[2023-09-30 17:22:39 +0300] [1009602] [DEBUG] GET /
+[2023-09-30 17:22:39 +0300] [1009601] [DEBUG] GET /favicon.ico
+[2023-09-30 17:29:40 +0300] [1009602] [DEBUG] GET /LoginSupervisor
+[2023-09-30 19:20:31 +0300] [1009602] [DEBUG] Ignored premature client disconnection. No more data after: b'\x16\x03\x01\x00\xf6\x01\x00\x00\xf2\x03\x03\x05\xde\xa4\x8ac\xd7\x15\x95Y\xe3\xd0\xbe}\xf1\xa6J^\x97\xabd\xa3\x8cY\x1e\xc9\x05\xb1\xda\xc1\xffG\xf1 \xea\xfe5\xe1\xf4\xff\xea\xf9\xbb\x8d\xe8X\xef\xb5=\xea\xe2O.\x14\xd8\xfc4\x85\x92\xe1\x0f\x05\x12?\x98\xaf\x00\x1e\x13\x01\x13\x02\x13\x03\xc0+\xc0,\xcc\xa9\xc0/\xc00\xcc\xa8\xc0\x13\xc0\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x00\x8b\x00\x17\x00\x00\xff\x01\x00\x01\x00\x00\n\x00\x08\x00\x06\x00\x1d\x00\x17\x00\x18\x00\x0b\x00\x02\x01\x00\x00#\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\r\x00\x14\x00\x12\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x02\x01\x003\x00&\x00$\x00\x1d\x00 \xf0\x01\xd8\xdd\xa7\x9b[\xefr\x01\xc0.i\xea\x9f\n\xbc|\x7fh\xc5\x07\xbbS\xa9\xaf\x06\xb1,)1\x1e\x00-\x00\x02\x01\x01\x00+\x00\x05\x04\x03\x04\x03\x03'
+[2023-09-30 19:25:10 +0300] [1009602] [DEBUG] POST /RegisterUser
+[2023-09-30 19:26:17 +0300] [1009601] [DEBUG] POST /RegisterUser
+[2023-09-30 19:27:41 +0300] [1009602] [DEBUG] POST /RegisterUser
+[2023-09-30 19:28:54 +0300] [1009601] [DEBUG] POST /register_user
+[2023-09-30 19:29:25 +0300] [1009601] [DEBUG] GET /
+[2023-09-30 19:29:56 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1009601)
+[2023-09-30 19:29:56 +0300] [1009601] [INFO] Worker exiting (pid: 1009601)
+[2023-09-30 19:29:56 +0300] [1008862] [ERROR] Worker (pid:1009601) exited with code 1
+[2023-09-30 19:29:56 +0300] [1008862] [ERROR] Worker (pid:1009601) exited with code 1.
+[2023-09-30 19:29:56 +0300] [1010929] [INFO] Booting worker with pid: 1010929
+[2023-09-30 19:31:14 +0300] [1009602] [DEBUG] POST /register_user
+[2023-09-30 19:32:40 +0300] [1009602] [DEBUG] POST /register_user
+[2023-09-30 19:34:55 +0300] [1009600] [DEBUG] GET /register_user
+[2023-09-30 19:35:02 +0300] [1009600] [DEBUG] POST /register_user
+[2023-09-30 19:35:25 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1009602)
+[2023-09-30 19:35:25 +0300] [1009602] [INFO] Worker exiting (pid: 1009602)
+[2023-09-30 19:35:25 +0300] [1008862] [ERROR] Worker (pid:1009602) exited with code 1
+[2023-09-30 19:35:25 +0300] [1008862] [ERROR] Worker (pid:1009602) exited with code 1.
+[2023-09-30 19:35:25 +0300] [1010970] [INFO] Booting worker with pid: 1010970
+[2023-09-30 19:39:35 +0300] [1009600] [DEBUG] GET /login
+[2023-09-30 19:40:39 +0300] [1009600] [DEBUG] GET /login
+[2023-09-30 19:41:37 +0300] [1010970] [DEBUG] GET /login
+[2023-09-30 19:42:08 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1009603)
+[2023-09-30 19:42:08 +0300] [1009603] [INFO] Worker exiting (pid: 1009603)
+[2023-09-30 19:42:08 +0300] [1008862] [ERROR] Worker (pid:1009603) exited with code 1
+[2023-09-30 19:42:08 +0300] [1008862] [ERROR] Worker (pid:1009603) exited with code 1.
+[2023-09-30 19:42:08 +0300] [1011019] [INFO] Booting worker with pid: 1011019
+[2023-09-30 19:44:53 +0300] [1010970] [DEBUG] GET /login
+[2023-09-30 19:44:56 +0300] [1011019] [DEBUG] GET /
+[2023-09-30 19:45:24 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1010929)
+[2023-09-30 19:45:24 +0300] [1010929] [INFO] Worker exiting (pid: 1010929)
+[2023-09-30 19:45:24 +0300] [1008862] [ERROR] Worker (pid:1010929) exited with code 1
+[2023-09-30 19:45:24 +0300] [1008862] [ERROR] Worker (pid:1010929) exited with code 1.
+[2023-09-30 19:45:24 +0300] [1011190] [INFO] Booting worker with pid: 1011190
+[2023-09-30 19:45:55 +0300] [1009600] [DEBUG] GET /login
+[2023-09-30 19:46:51 +0300] [1011019] [DEBUG] GET /login
+[2023-09-30 19:51:08 +0300] [1011019] [DEBUG] GET /login
+[2023-09-30 19:51:30 +0300] [1009600] [DEBUG] GET /login
+[2023-09-30 19:52:32 +0300] [1009600] [DEBUG] GET /login_supervisor
+[2023-09-30 19:53:01 +0300] [1011190] [DEBUG] GET /login_supervisor
+[2023-09-30 19:53:02 +0300] [1011019] [DEBUG] GET /login_supervisor
+[2023-09-30 19:54:00 +0300] [1010970] [DEBUG] GET /
+[2023-09-30 19:54:31 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1011190)
+[2023-09-30 19:54:31 +0300] [1011190] [INFO] Worker exiting (pid: 1011190)
+[2023-09-30 19:54:31 +0300] [1008862] [ERROR] Worker (pid:1011190) exited with code 1
+[2023-09-30 19:54:31 +0300] [1008862] [ERROR] Worker (pid:1011190) exited with code 1.
+[2023-09-30 19:54:31 +0300] [1011265] [INFO] Booting worker with pid: 1011265
+[2023-09-30 19:57:47 +0300] [1011019] [DEBUG] GET /login_supervisor
+[2023-09-30 20:00:41 +0300] [1009600] [DEBUG] GET /login_supervisor
+[2023-09-30 20:06:05 +0300] [1011019] [DEBUG] POST /login
+[2023-09-30 20:06:05,034] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:07:38 +0300] [1011019] [DEBUG] POST /login
+[2023-09-30 20:07:38,834] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:07:59 +0300] [1009600] [DEBUG] POST /login
+[2023-09-30 20:07:59,887] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:08:42 +0300] [1011265] [DEBUG] GET /
+[2023-09-30 20:09:04 +0300] [1010970] [DEBUG] POST /login
+[2023-09-30 20:09:04,117] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:09:12 +0300] [1008862] [CRITICAL] WORKER TIMEOUT (pid:1011019)
+[2023-09-30 20:09:12 +0300] [1011019] [INFO] Worker exiting (pid: 1011019)
+[2023-09-30 20:09:12 +0300] [1008862] [ERROR] Worker (pid:1011019) exited with code 120
+[2023-09-30 20:09:12 +0300] [1008862] [ERROR] Worker (pid:1011019) exited with code 120.
+[2023-09-30 20:09:12 +0300] [1011395] [INFO] Booting worker with pid: 1011395
+[2023-09-30 20:09:20 +0300] [1010970] [DEBUG] POST /login
+[2023-09-30 20:09:20,408] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:09:33 +0300] [1009600] [DEBUG] POST /login
+[2023-09-30 20:09:33,727] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:09:47 +0300] [1011395] [DEBUG] POST /login
+[2023-09-30 20:09:47,818] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:17:29 +0300] [1011395] [DEBUG] POST /login
+[2023-09-30 20:17:29,975] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:17:37 +0300] [1011265] [DEBUG] POST /login
+[2023-09-30 20:17:37,089] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    print(username, password)
+OSError: [Errno 5] Input/output error
+[2023-09-30 20:22:26 +0300] [1010970] [INFO] Worker reloading: /home/snese/hackatons/kokos/activity-and-charity/backend/app.py modified
+[2023-09-30 20:22:26 +0300] [1010970] [INFO] Worker exiting (pid: 1010970)
+[2023-09-30 20:22:26 +0300] [1009600] [INFO] Worker reloading: /home/snese/hackatons/kokos/activity-and-charity/backend/app.py modified
+[2023-09-30 20:22:26 +0300] [1009600] [INFO] Worker exiting (pid: 1009600)
+[2023-09-30 20:22:26 +0300] [1011395] [INFO] Worker reloading: /home/snese/hackatons/kokos/activity-and-charity/backend/app.py modified
+[2023-09-30 20:22:26 +0300] [1011395] [INFO] Worker exiting (pid: 1011395)
+[2023-09-30 20:22:26 +0300] [1008862] [ERROR] Worker (pid:1010970) exited with code 120
+[2023-09-30 20:22:26 +0300] [1008862] [ERROR] Worker (pid:1010970) exited with code 120.
+[2023-09-30 20:22:26 +0300] [1011700] [INFO] Booting worker with pid: 1011700
+[2023-09-30 20:22:27 +0300] [1011265] [INFO] Worker reloading: /home/snese/hackatons/kokos/activity-and-charity/backend/app.py modified
+[2023-09-30 20:22:27 +0300] [1011265] [INFO] Worker exiting (pid: 1011265)
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1009600) exited with code 120
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1009600) exited with code 120.
+[2023-09-30 20:22:27 +0300] [1011701] [INFO] Booting worker with pid: 1011701
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1011395) exited with code 120
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1011395) exited with code 120.
+[2023-09-30 20:22:27 +0300] [1011702] [INFO] Booting worker with pid: 1011702
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1011265) exited with code 120
+[2023-09-30 20:22:27 +0300] [1008862] [ERROR] Worker (pid:1011265) exited with code 120.
+[2023-09-30 20:22:27 +0300] [1011703] [INFO] Booting worker with pid: 1011703
+[2023-09-30 20:23:20 +0300] [1008862] [INFO] Handling signal: term
+[2023-09-30 20:23:20 +0300] [1011700] [INFO] Worker exiting (pid: 1011700)
+[2023-09-30 20:23:20 +0300] [1011701] [INFO] Worker exiting (pid: 1011701)
+[2023-09-30 20:23:20 +0300] [1011702] [INFO] Worker exiting (pid: 1011702)
+[2023-09-30 20:23:20 +0300] [1011703] [INFO] Worker exiting (pid: 1011703)
+[2023-09-30 20:23:21 +0300] [1008862] [INFO] Shutting down: Master
+[2023-09-30 20:24:12 +0300] [1011743] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 4
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/snese/hackatons/kokos/activity-and-charity/backend
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1003
+  group: 1003
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: None
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn.log
+  loglevel: DEBUG
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: wsgi:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fa38ecb8220>
+  on_reload: <function OnReload.on_reload at 0x7fa38ecb8360>
+  when_ready: <function WhenReady.when_ready at 0x7fa38ecb84a0>
+  pre_fork: <function Prefork.pre_fork at 0x7fa38ecb85e0>
+  post_fork: <function Postfork.post_fork at 0x7fa38ecb8720>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fa38ecb8860>
+  worker_int: <function WorkerInt.worker_int at 0x7fa38ecb89a0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fa38ecb8ae0>
+  pre_exec: <function PreExec.pre_exec at 0x7fa38ecb8c20>
+  pre_request: <function PreRequest.pre_request at 0x7fa38ecb8d60>
+  post_request: <function PostRequest.post_request at 0x7fa38ecb8e00>
+  child_exit: <function ChildExit.child_exit at 0x7fa38ecb8f40>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fa38ecb9080>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fa38ecb91c0>
+  on_exit: <function OnExit.on_exit at 0x7fa38ecb9300>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fa38ecb94e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2023-09-30 20:24:12 +0300] [1011743] [INFO] Starting gunicorn 21.2.0
+[2023-09-30 20:24:12 +0300] [1011743] [DEBUG] Arbiter booted
+[2023-09-30 20:24:12 +0300] [1011743] [INFO] Listening at: http://0.0.0.0:8000 (1011743)
+[2023-09-30 20:24:12 +0300] [1011743] [INFO] Using worker: sync
+[2023-09-30 20:24:12 +0300] [1011744] [INFO] Booting worker with pid: 1011744
+[2023-09-30 20:24:12 +0300] [1011745] [INFO] Booting worker with pid: 1011745
+[2023-09-30 20:24:12 +0300] [1011746] [INFO] Booting worker with pid: 1011746
+[2023-09-30 20:24:12 +0300] [1011747] [INFO] Booting worker with pid: 1011747
+[2023-09-30 20:24:12 +0300] [1011743] [DEBUG] 4 workers
+[2023-09-30 20:24:15 +0300] [1011747] [DEBUG] POST /login
+[2023-09-30 20:24:15,904] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    if db.user_exists(username):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/database.py", line 11, in user_exists
+    self.cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+sqlite3.OperationalError: no such table: users
+[2023-09-30 20:24:35 +0300] [1011747] [DEBUG] POST /login
+[2023-09-30 20:24:35,895] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    if db.user_exists(username):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/database.py", line 11, in user_exists
+    self.cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+sqlite3.OperationalError: no such table: users
+[2023-09-30 20:25:00 +0300] [1011746] [DEBUG] POST /login
+[2023-09-30 20:25:00,372] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 29, in login
+    if db.user_exists(username):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/database.py", line 11, in user_exists
+    self.cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+sqlite3.OperationalError: no such table: users
+[2023-09-30 20:25:11 +0300] [1011747] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011745] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011744] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011743] [INFO] Handling signal: winch
+[2023-09-30 20:25:11 +0300] [1011743] [DEBUG] SIGWINCH ignored. Not daemonized
+[2023-09-30 20:25:11 +0300] [1011746] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011744] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011745] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011746] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011743] [INFO] Handling signal: winch
+[2023-09-30 20:25:11 +0300] [1011743] [DEBUG] SIGWINCH ignored. Not daemonized
+[2023-09-30 20:25:11 +0300] [1011747] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011744] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011746] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011745] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011747] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011743] [INFO] Handling signal: winch
+[2023-09-30 20:25:11 +0300] [1011743] [DEBUG] SIGWINCH ignored. Not daemonized
+[2023-09-30 20:25:11 +0300] [1011746] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:11 +0300] [1011744] [DEBUG] worker: SIGWINCH ignored.
+[2023-09-30 20:25:53 +0300] [1011745] [DEBUG] GET /get_top
+[2023-09-30 20:25:53,109] ERROR in app: Exception on /get_top [GET]
+Traceback (most recent call last):
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/app.py", line 69, in get_top
+    return db.get_top_users()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/snese/hackatons/kokos/activity-and-charity/backend/database.py", line 110, in get_top_users
+    self.cursor.execute(
+sqlite3.OperationalError: no such table: activities
+[2023-09-30 20:25:58 +0300] [1011743] [INFO] Handling signal: int
+[2023-09-30 20:25:58 +0300] [1011744] [INFO] Worker exiting (pid: 1011744)
+[2023-09-30 20:25:58 +0300] [1011746] [INFO] Worker exiting (pid: 1011746)
+[2023-09-30 20:25:58 +0300] [1011745] [INFO] Worker exiting (pid: 1011745)
+[2023-09-30 20:25:58 +0300] [1011747] [INFO] Worker exiting (pid: 1011747)
+[2023-09-30 20:25:59 +0300] [1011743] [INFO] Shutting down: Master

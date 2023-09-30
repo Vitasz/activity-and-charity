@@ -26,8 +26,6 @@ def login():
     
     username = data["username"]
     password = data["password"]
-    print(username, password)
-    sys.stdout.flush()
     if db.user_exists(username):
         if db.login_user(username, password):
             resp = make_response("Logged in successfully")
@@ -75,8 +73,6 @@ def get_top():
 @app.route("/get_activities_supervisor", methods=["GET"])
 def get_activities_supervisor():
     id_subdivision = request.cookies.get("supervisor_id")
-    print(id_subdivision)
-    sys.stdout.flush()
     return db.get_subdivision_activities(id_subdivision)
 
 
@@ -158,3 +154,8 @@ def select_subdivision():
     subdivision_id = data["subdivisionId"]
     db.select_subdivision(user_id, subdivision_id)
     return "Subdivision selected", 200
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8000)
+
