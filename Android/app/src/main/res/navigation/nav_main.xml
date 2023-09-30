@@ -15,7 +15,11 @@
             app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_startFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -26,5 +30,22 @@
         android:id="@+id/signUpFragment"
         android:name="com.monke.begit.ui.loginFeature.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_employeeSignUpFragment"
+            app:destination="@id/employeeSignUpFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_supervisorSignUpFragment"
+            app:destination="@id/supervisorSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeSignUpFragment"
+        android:name="com.monke.begit.ui.loginFeature.EmployeeSignUpFragment"
+        android:label="fragment_employee_sign_up"
+        tools:layout="@layout/fragment_employee_sign_up" />
+    <fragment
+        android:id="@+id/supervisorSignUpFragment"
+        android:name="com.monke.begit.ui.loginFeature.SupervisorSignUpFragment"
+        android:label="fragment_supervisor_sign_up"
+        tools:layout="@layout/fragment_supervisor_sign_up" />
 </navigation>

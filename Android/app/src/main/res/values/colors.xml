@@ -6,9 +6,9 @@
     <color name="background">#FFfbffff</color>
     <color name="primary">#FF20305c</color>
     <color name="onPrimary">#FFfbffff</color>
-    <color name="surface">#FFfbffff</color>
+    <color name="surface">#d4eeff</color>
     <color name="onSurface">#FF20305c</color>
-    <color name="secondary">#d4eeff</color>
+    <color name="secondary">#FFff94cb</color>
     <color name="onSecondary">#FF20305c</color>
     <color name="tertiary">#FFffe0a1</color>
     <color name="gray">#FF808080</color>
