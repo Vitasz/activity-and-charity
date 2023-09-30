@@ -1,15 +1,25 @@
 package com.monke.begit.di
 
 import android.app.Application
+import com.monke.begit.ui.loginFeature.SignInFragment
+import com.monke.begit.ui.loginFeature.signUp.EmployeeSignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
+import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
 import dagger.BindsInstance
 import dagger.Component
 
 @AppScope
-@Component
+@Component(modules = [UserModule::class])
 interface AppComponent {
 
     fun inject(signUpFragment: SignUpFragment)
+
+    fun inject(signInFragment: SignInFragment)
+
+    fun inject(employeeSignUpFragment: EmployeeSignUpFragment)
+
+    fun inject(supervisorSignUpFragment: SupervisorSignUpFragment)
+
 
     @Component.Builder
     interface Builder {

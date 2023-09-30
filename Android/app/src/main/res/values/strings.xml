@@ -17,6 +17,8 @@
     <string name="profile">Профиль</string>
     <string name="activities">Активности</string>
     <string name="leaderboard">Рейтинг</string>
+    <string name="incorrect_password">Неправильный пароль!</string>
+    <string name="incorrect_email">Пользователя с такой почтой не существует!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
