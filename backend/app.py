@@ -174,7 +174,12 @@ def register_user():
         return "User already exists", 403
     if check_email(email) and check_password(password):
         db.add_user(username, password, email, name)
-        return "User registered", 200
+        resp = make_response("User registered", 200)
+        resp.set_cookie(
+            "user_id", str(db.get_user_id(username)), secure=True, httponly=True
+        )
+        resp.set_cookie("username", username, secure=True, httponly=True)
+        return resp
     return "Invalid email or password", 403
 
 
@@ -196,8 +201,13 @@ def register_supervisor():
     if db.supervisor_exists(username):
         return "Supervisor already exists", 403
     if check_email(email) and check_password(password):
+        resp = make_response("Supervisor registered", 200)
+        resp.set_cookie(
+            "user_id", str(db.get_user_id(username)), secure=True, httponly=True
+        )
+        resp.set_cookie("username", username, secure=True, httponly=True)
         db.add_user(username, password, email, name)
-        return "Supervisor registered", 200
+        return resp
     return "Invalid email or password", 403
 
 
@@ -212,6 +222,7 @@ def register_fund():
     if db.fund_exists(username):
         return "Fund already exists", 403
     db.add_fund(username, password, email, name)
+    
     return "Fund registered"
 
 
