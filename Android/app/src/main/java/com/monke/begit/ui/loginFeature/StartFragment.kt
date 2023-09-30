@@ -28,6 +28,7 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupSignUpBtn()
+        setupSignInBtn()
     }
 
     private fun setupSignUpBtn() {
@@ -36,4 +37,10 @@ class StartFragment : Fragment() {
         }
     }
 
+
+    private fun setupSignInBtn() {
+        binding?.btnSignIn?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_startFragment_to_signInFragment)
+        }
+    }
 }

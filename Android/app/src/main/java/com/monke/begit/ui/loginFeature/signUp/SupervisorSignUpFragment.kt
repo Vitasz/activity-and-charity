@@ -1,6 +1,5 @@
-package com.monke.begit.ui.loginFeature
+package com.monke.begit.ui.loginFeature.signUp
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

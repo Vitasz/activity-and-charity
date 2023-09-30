@@ -1,6 +1,5 @@
-package com.monke.begit.ui.loginFeature
+package com.monke.begit.ui.loginFeature.signUp
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.navigation.findNavController
 import com.monke.begit.App
 import com.monke.begit.R
 import com.monke.begit.databinding.FragmentSignUpBinding
-import com.monke.begit.databinding.FragmentStartBinding
 import com.monke.begit.domain.model.AccountType
 import javax.inject.Inject
 

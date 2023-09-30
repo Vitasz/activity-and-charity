@@ -1,4 +1,4 @@
-package com.monke.begit.ui.loginFeature
+package com.monke.begit.ui.loginFeature.signUp
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

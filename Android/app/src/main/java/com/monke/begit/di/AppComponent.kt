@@ -1,8 +1,7 @@
 package com.monke.begit.di
 
 import android.app.Application
-import com.monke.begit.ui.loginFeature.EmployeeSignUpFragment
-import com.monke.begit.ui.loginFeature.SignUpFragment
+import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
 import dagger.BindsInstance
 import dagger.Component
 
