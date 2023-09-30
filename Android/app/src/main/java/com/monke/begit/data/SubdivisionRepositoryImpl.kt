@@ -1,10 +1,12 @@
 package com.monke.begit.data
 
+import com.monke.begit.di.AppScope
 import com.monke.begit.domain.mockedSubdivisions
 import com.monke.begit.domain.model.Subdivision
 import com.monke.begit.domain.repository.SubdivisionRepository
 import javax.inject.Inject
 
+@AppScope
 class SubdivisionRepositoryImpl @Inject constructor(): SubdivisionRepository {
 
     private val subdivisionsList = ArrayList<Subdivision>()

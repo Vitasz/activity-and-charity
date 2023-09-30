@@ -6,6 +6,7 @@ import com.monke.begit.ui.loginFeature.SignInFragment
 import com.monke.begit.ui.loginFeature.signUp.EmployeeSignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
+import com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -20,6 +21,8 @@ interface AppComponent {
     fun inject(employeeSignUpFragment: EmployeeSignUpFragment)
 
     fun inject(supervisorSignUpFragment: SupervisorSignUpFragment)
+
+    fun inject(profileFragment: ProfileFragment)
 
 
     @Component.Builder

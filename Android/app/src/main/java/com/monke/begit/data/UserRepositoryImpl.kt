@@ -1,6 +1,8 @@
 package com.monke.begit.data
 
+import android.util.Log
 import com.monke.begit.data.remote.API
+import com.monke.begit.di.AppScope
 import com.monke.begit.domain.mockedUsers
 import com.monke.begit.domain.model.AccountType
 import com.monke.begit.domain.model.Subdivision
@@ -8,6 +10,7 @@ import com.monke.begit.domain.model.User
 import com.monke.begit.domain.repository.UserRepository
 import javax.inject.Inject
 
+@AppScope
 class UserRepositoryImpl @Inject constructor(
     private val api: API
 ) : UserRepository {
@@ -22,6 +25,10 @@ class UserRepositoryImpl @Inject constructor(
         accountType = AccountType.Employee,
         subdivision = Subdivision(id = 0, name = "", code = "")
     )
+
+    init {
+        Log.d("UserRepository", "init")
+    }
 
     override fun getUser(): User {
         return user
