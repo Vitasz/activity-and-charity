@@ -1,6 +1,7 @@
 package com.monke.begit
 
 import android.Manifest.permission.ACTIVITY_RECOGNITION
+import android.Manifest.permission.CAMERA
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -57,19 +58,22 @@ class MainActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     private fun setupGoogleFit() {
-        if (ContextCompat.checkSelfPermission(this, ACTIVITY_RECOGNITION)
+        val cc = ContextCompat.checkSelfPermission(this, ACTIVITY_RECOGNITION)
+        if (cc
             != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                 arrayOf(ACTIVITY_RECOGNITION),
                 1)
             // Permission is not granted
         }
+
         fitnessOptions = FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
             .build()
 
         val account = GoogleSignIn.getAccountForExtension(this, fitnessOptions)
-        googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
+        googleSignInClient =
+            GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
 
         if (!GoogleSignIn.hasPermissions(account, fitnessOptions)) {
             GoogleSignIn.requestPermissions(
@@ -81,15 +85,23 @@ class MainActivity : AppCompatActivity() {
         } else {
             val readRequest = DataReadRequest.Builder()
                 .read(DataType.TYPE_STEP_COUNT_DELTA)
-                .setTimeRange(System.currentTimeMillis()-100000, System.currentTimeMillis(), TimeUnit.MILLISECONDS)
+                .setTimeRange(
+                    System.currentTimeMillis() - 100000,
+                    System.currentTimeMillis(),
+                    TimeUnit.MILLISECONDS
+                )
                 .build()
             account.let {
                 Fitness.getHistoryClient(this, it)
                     .readData(readRequest)
                     .addOnSuccessListener { response ->
                         val dataSet = response.getDataSet(DataType.TYPE_STEP_COUNT_DELTA)
-                        val totalSteps = if (dataSet.isEmpty) 0 else dataSet.getDataPoints().sumBy { it.getValue(
-                            Field.FIELD_STEPS).asInt() }
+                        val totalSteps =
+                            if (dataSet.isEmpty) 0 else dataSet.getDataPoints().sumBy {
+                                it.getValue(
+                                    Field.FIELD_STEPS
+                                ).asInt()
+                            }
 
                         // Print the total number of steps in a view
                         textView.text = "Total Steps: $totalSteps"
@@ -99,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                     }
             }
         }
+
 
         /*
         val listener = OnDataPointListener { dataPoint ->
@@ -127,6 +140,63 @@ class MainActivity : AppCompatActivity() {
                 // Successfully subscribed to step count updates
             }*/
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                fitnessOptions = FitnessOptions.builder()
+                    .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
+                    .build()
+
+                val account = GoogleSignIn.getAccountForExtension(this, fitnessOptions)
+                googleSignInClient =
+                    GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
+
+                if (!GoogleSignIn.hasPermissions(account, fitnessOptions)) {
+                    GoogleSignIn.requestPermissions(
+                        this,
+                        GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
+                        account,
+                        fitnessOptions
+                    )
+                } else {
+                    val readRequest = DataReadRequest.Builder()
+                        .read(DataType.TYPE_STEP_COUNT_DELTA)
+                        .setTimeRange(
+                            System.currentTimeMillis() - 100000,
+                            System.currentTimeMillis(),
+                            TimeUnit.MILLISECONDS
+                        )
+                        .build()
+                    account.let {
+                        Fitness.getHistoryClient(this, it)
+                            .readData(readRequest)
+                            .addOnSuccessListener { response ->
+                                val dataSet = response.getDataSet(DataType.TYPE_STEP_COUNT_DELTA)
+                                val totalSteps =
+                                    if (dataSet.isEmpty) 0 else dataSet.getDataPoints().sumBy {
+                                        it.getValue(
+                                            Field.FIELD_STEPS
+                                        ).asInt()
+                                    }
+
+                                // Print the total number of steps in a view
+                                textView.text = "Total Steps: $totalSteps"
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("ERROR", "There was a problem reading step count data.", e)
+                            }
+                    }
+                }
+            }
+        }
+    }
+
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -134,7 +204,7 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 subscribeToStepCountUpdates()
             } else {
-                // Handle permission denied
+                Log.e("FUCK", resultCode.toString())
             }
         }
     }
