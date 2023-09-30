@@ -89,6 +89,9 @@ def login_supervisor():
                 "selectedFund": res[5] if res[5] is not None else -1,
             }
             resp = make_response(res)
+            resp.headers.add("Access-Control-Allow-Origin", "*")
+            resp.headers.add("Access-Control-Allow-Headers", "*")
+            resp.headers.add("Access-Control-Allow-Methods", "*")
             resp.set_cookie(
                 "supervisor_id",
                 str(db.get_supervisor_id(username)),
