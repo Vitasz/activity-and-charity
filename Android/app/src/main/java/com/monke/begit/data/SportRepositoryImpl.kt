@@ -9,8 +9,16 @@ import javax.inject.Inject
 @AppScope
 class SportRepositoryImpl @Inject constructor(): SportRepository {
 
+
+    private var trackedSportActivity : SportActivity? = null
+
     override suspend fun getActivitiesList(): Result<List<SportActivity>> {
         return Result.success(mockedActivities)
     }
+
+    override fun setTrackedSportActivity(sportActivity: SportActivity) {
+        trackedSportActivity = sportActivity
+    }
+
 
 }

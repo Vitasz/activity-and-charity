@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 import javax.inject.Inject
 
 class TrackActivityViewModel : ViewModel() {
@@ -49,8 +50,6 @@ class TrackActivityViewModel : ViewModel() {
                 }
             }
         }
-
-
     }
 
     fun setSportActivityState(state: SportActivityState) {

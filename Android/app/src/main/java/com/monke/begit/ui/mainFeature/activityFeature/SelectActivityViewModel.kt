@@ -26,7 +26,9 @@ class SelectActivityViewModel (
         }
     }
 
-
+    fun saveSportActivity() {
+        sportRepository.setTrackedSportActivity(selectedActivity)
+    }
 
     class Factory @Inject constructor(
         private val sportRepository: SportRepository

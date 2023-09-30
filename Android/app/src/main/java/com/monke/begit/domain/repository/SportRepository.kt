@@ -6,4 +6,6 @@ interface SportRepository {
 
     suspend fun getActivitiesList(): Result<List<SportActivity>>
 
+    fun setTrackedSportActivity(sportActivity: SportActivity)
+
 }

@@ -56,6 +56,7 @@ class SelectActivityFragment : Fragment() {
 
     private fun setupPlayButton() {
         binding?.btnStart?.setOnClickListener {
+            viewModel.saveSportActivity()
             it.findNavController()
                 .navigate(R.id.action_selectActivityFragment_to_trackActivityFragment)
         }
