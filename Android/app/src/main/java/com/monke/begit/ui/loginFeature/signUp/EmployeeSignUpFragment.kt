@@ -48,7 +48,6 @@ class EmployeeSignUpFragment : Fragment() {
 
         setupNameEditText()
         setupPasswordEditText()
-        setupSubdivisionNameEditText()
         setupSurnameEditText()
         setupRepeatedPasswordEditText()
 
@@ -133,17 +132,6 @@ class EmployeeSignUpFragment : Fragment() {
         })
     }
 
-    private fun setupSubdivisionNameEditText() {
-        binding?.inputCode?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(text: Editable?) {
-                text?.let { viewModel.subdivisionCode = text.toString() }
-            }
-        })
-    }
 
 
 }

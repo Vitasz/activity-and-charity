@@ -25,23 +25,20 @@ val mockedSubdivisions = listOf(
 
 val mockedUsers = listOf(
     User(
-        id = 1,
         name = "Maxim",
         surname = "Boolean",
         login = "bigBoolean",
         password = "boolean",
         email = "booleam@org.com",
-        accountType = AccountType.Employee,
-        subdivision = mockedSubdivisions[1]),
+        accountType = AccountType.Employee),
     User(
-        id = 2,
         name = "Роман",
         surname = "Дзержинский",
         login = "BigBoss",
         password = "platonovGraph",
         email = "1234567@org.com",
         accountType = AccountType.Supervisor,
-        subdivision = mockedSubdivisions[0])
+    )
 )
 
 val mockedActivities = listOf(

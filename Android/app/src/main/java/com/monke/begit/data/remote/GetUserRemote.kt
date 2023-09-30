@@ -1,6 +1,6 @@
 package com.monke.begit.data.remote
 
-data class User(
+data class GetUserRemote(
            val username: String,
            val email: String,
            val name: String,

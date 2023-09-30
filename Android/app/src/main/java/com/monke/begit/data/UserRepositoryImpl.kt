@@ -2,6 +2,7 @@ package com.monke.begit.data
 
 import android.util.Log
 import com.monke.begit.data.remote.API
+import com.monke.begit.data.remote.LoginUserRemote
 import com.monke.begit.di.AppScope
 import com.monke.begit.domain.exceptions.IncorrectPasswordException
 import com.monke.begit.domain.mockedUsers
@@ -9,6 +10,7 @@ import com.monke.begit.domain.model.AccountType
 import com.monke.begit.domain.model.Subdivision
 import com.monke.begit.domain.model.User
 import com.monke.begit.domain.repository.UserRepository
+import com.monke.begit.hashString
 import java.security.MessageDigest
 import javax.inject.Inject
 
@@ -18,14 +20,12 @@ class UserRepositoryImpl @Inject constructor(
 ) : UserRepository {
 
     private var user: User = User(
-        id = 0,
         name = "",
         surname = "",
         login = "",
         password = "",
         email = "",
         accountType = AccountType.Employee,
-        subdivision = Subdivision(id = 0, name = "", code = "")
     )
 
     init {
@@ -44,65 +44,49 @@ class UserRepositoryImpl @Inject constructor(
 
         return Result.success(mockedUsers.find { it.email == email })
     }
-    fun String.md5(): String {
-        return hashString(this, "MD5")
-    }
-
-    fun String.sha256(): String {
-        return hashString(this, "SHA-256")
-    }
-
-    private fun hashString(input: String, algorithm: String): String {
-        return MessageDigest
-            .getInstance(algorithm)
-            .digest(input.toByteArray())
-            .fold("", { str, it -> str + "%02x".format(it) })
-    }
 
     override suspend fun createUser(): Result<Any?> {
-        val response = api.registerUser(API.RequestBodyRegister(
-            user.login, hashString(user.password, "SHA-256"), user.email, user.name
-        ))
-
+        val response = api.registerUser(User.toRemote(user))
 
         return if (response.isSuccessful){
             Result.success(response.body())
         } else{
+            Log.e("Error", response.message() + "${response.code()}")
             Result.failure(IncorrectPasswordException())
         }
     }
 
     override suspend fun createSupervisor(): Result<Any?> {
-        val response = api.registerSupervisor(API.RequestBodyRegister(
-            user.login, hashString(user.password, "SHA-256"), user.email, user.name
-        ))
-
-
+        val response = api.registerSupervisor(User.toRemote(user))
         return if (response.isSuccessful){
             Result.success(response.body())
         } else{
+            Log.e("Error", response.message() + "${response.code()}")
             Result.failure(IncorrectPasswordException())
         }
     }
 
-    override suspend fun loginUser(): Result<Any?>{
+    override suspend fun loginUser(username: String, password: String): Result<Any?>{
         val response = api.loginUser(
-            API.RequestBodyLogin("johnsmith", hashString("password123", "SHA-256"))
+            LoginUserRemote(
+                username = username,
+                password = hashString(password, "SHA-256")
+            )
         )
         return if (response.isSuccessful){
             Result.success(response.body())
         } else{
+            Log.e("Error", response.message() + "${response.code()}")
             Result.failure(IncorrectPasswordException())
         }
     }
 
     override suspend fun loginSupervisor(): Result<Any?> {
-        val response = api.loginSupervisor(
-            API.RequestBodyLogin(user.login, hashString(user.password, "SHA-256"))
-        )
+        val response = api.loginSupervisor(User.toLoginUser(user))
         return if (response.isSuccessful){
             Result.success(response.body())
         } else{
+            Log.e("Error", response.message() + "${response.code()}")
             Result.failure(IncorrectPasswordException())
         }
     }

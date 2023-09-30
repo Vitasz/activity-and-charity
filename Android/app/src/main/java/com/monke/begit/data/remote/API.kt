@@ -1,10 +1,6 @@
 package com.monke.begit.data.remote
 
 
-import com.monke.begit.data.remote.Fund
-import com.monke.begit.data.remote.PhysicalActivity
-import com.monke.begit.data.remote.User
-import com.monke.begit.data.remote.UserTop
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -40,24 +36,21 @@ interface API {
     @Headers("Content-Type: application/json")
     suspend fun getSubdivisionById(@Query("subdivisionId") subdivisionId: Int): Response<String>
 
-    data class RequestBodyRegister(var username:String, var password: String,
-                                   var email: String, var name: String)
     @POST("/register_user")
     @Headers("Content-Type: application/json")
-    suspend fun registerUser(@Body body: RequestBodyRegister): Response<String>
+    suspend fun registerUser(@Body body: PostUserRemote): Response<Unit>
 
     @POST("/register_supervisor")
     @Headers("Content-Type: application/json")
-    suspend fun registerSupervisor(@Body body: RequestBodyRegister): Response<String>
+    suspend fun registerSupervisor(@Body body: PostUserRemote): Response<Unit>
 
-    data class RequestBodyLogin(var username:String, var password: String)
     @POST("/login")
     @Headers("Content-Type: application/json")
-    suspend fun loginUser(@Body body: RequestBodyLogin): Response<User>
+    suspend fun loginUser(@Body body: LoginUserRemote): Response<GetUserRemote>
 
     @POST("/login_supervisor")
     @Headers("Content-Type: application/json")
-    suspend fun loginSupervisor(@Body body: RequestBodyLogin): Response<User>
+    suspend fun loginSupervisor(@Body body: LoginUserRemote): Response<GetUserRemote>
 
     data class RequestBodySelectFund(var fundId: Int)
     @POST("/select_fund")

@@ -1,6 +1,5 @@
 package com.monke.begit.ui.loginFeature
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -46,7 +45,7 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupPasswordEditText()
-        setupEmailEditText()
+        setupLoginEditText()
         setupSignInButton()
 
         // Подписывается на изменение состояния интерфейса
@@ -108,14 +107,14 @@ class SignInFragment : Fragment() {
         })
     }
 
-    private fun setupEmailEditText() {
-        binding?.inputEditTxtEmail?.addTextChangedListener(object : TextWatcher {
+    private fun setupLoginEditText() {
+        binding?.inputEditTxtLogin?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(text: Editable?) {
-                text?.let { viewModel.setEmail(text.toString()) }
+                text?.let { viewModel.setLogin(text.toString()) }
             }
 
         })

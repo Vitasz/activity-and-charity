@@ -20,7 +20,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_txt_email"
+        android:id="@+id/edit_txt_login"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_edit_txt_email"
+            android:id="@+id/input_edit_txt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email" />
@@ -47,7 +47,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_txt_email">
+        app:layout_constraintTop_toBottomOf="@+id/edit_txt_login">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_edit_txt_password"
