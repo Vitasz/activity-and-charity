@@ -32,10 +32,15 @@ class SQLiter:
         res = self.cursor.fetchall()
         return res[0]
     
-    def get_fund_info(self, username):
-        self.cursor.execute("SELECT * FROM funds WHERE username = ?", (username,))
+    def get_fund_info(self, fund_id):
+        self.cursor.execute("SELECT name FROM funds WHERE id = ?", (fund_id,))
         res = self.cursor.fetchall()
-        return res[0]
+        return res[0][0]
+    
+    def get_subdivision_info(self, subdivision_id):
+        self.cursor.execute("SELECT name FROM subdivisions WHERE id = ?", (subdivision_id,))
+        res = self.cursor.fetchall()
+        return res[0][0]
     
     def login_user(self, username, password):
         self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
