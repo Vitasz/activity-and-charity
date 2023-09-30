@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/background</item>
+        <item name="titleTextAppearance">@style/h1</item>
+        <item name="titleTextColor">@color/primary</item>
+    </style>
+
+    <style name="CardViewText" parent="Body1">
+        <item name="android:textColor">@color/onSurface</item>
+    </style>
+
+    <style name="DefaultText" parent="Body1">
+        <item name="android:textColor">@color/onSurface</item>
+    </style>
+
+    <style name="DefaultButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ButtonShape</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <style name="ButtonShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/buttonCornerRadius</item>
+    </style>
+
+    <style name="TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/activitiesFragment"
+        android:icon="@drawable/ic_activity"
+        android:title="@string/activities" />
+
+    <item
+        android:id="@+id/leaderBoardFragment"
+        android:icon="@drawable/ic_leaderboard"
+        android:title="@string/leaderboard" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
+</menu>

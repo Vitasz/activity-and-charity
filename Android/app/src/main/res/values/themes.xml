@@ -1,8 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.BegIt" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.BegIt" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="background">@color/white</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorError">@color/red</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+
+        <item name="toolbarStyle">@style/Toolbar</item>
+        <item name="android:textViewStyle">@style/DefaultText</item>
     </style>
 
     <style name="Theme.BegIt" parent="Base.Theme.BegIt" />

@@ -56,9 +56,6 @@ import java.util.concurrent.TimeUnit
 private const val GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 1001
 class MainActivity : AppCompatActivity() {
     private lateinit var api: API
-    private lateinit var textView: TextView
-    private lateinit var button: Button
-    private lateinit var button2: Button
     private lateinit var googleFitAPI: GoogleFitAPI
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -68,10 +65,6 @@ class MainActivity : AppCompatActivity() {
         //setupGoogleFit()
         //api.getActivities(1)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.textView)
-        button = findViewById(R.id.button)
-        button2 = findViewById(R.id.button2)
-        textView.text = "HI"
 
 
 
@@ -93,8 +86,6 @@ Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCA
         googleFitAPI = GoogleFitAPI(this)
         //x.sendRequest(DataType.TYPE_STEP_COUNT_DELTA, LocalDateTime.now().atZone(System),0,TimeUnit.MILLISECONDS)
         googleFitAPI.setupGoogleFit()
-        button.setOnClickListener { startActivity() }
-        button2.setOnClickListener { endActivity() }
     }
 
     private fun startActivity(){
