@@ -30,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name" />
@@ -47,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/surname" />
@@ -64,6 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_text_surname">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password" />
@@ -81,6 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_repeated_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/repeat_password" />
@@ -98,12 +102,14 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_txt_repeated_password">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_subdivisionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/subdivision_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btn_sign_up"
         style="@style/DefaultButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

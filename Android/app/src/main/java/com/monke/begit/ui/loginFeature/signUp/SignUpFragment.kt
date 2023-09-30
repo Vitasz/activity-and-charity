@@ -61,7 +61,8 @@ class SignUpFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(text: Editable?) {
-                viewModel.setEmail(text.toString())
+                text?.let { viewModel.setEmail(text.toString()) }
+
             }
         })
     }
@@ -74,7 +75,7 @@ class SignUpFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(text: Editable?) {
-                viewModel.setLogin(text.toString())
+                text?.let { viewModel.setLogin(text.toString()) }
             }
         })
     }
@@ -99,6 +100,7 @@ class SignUpFragment : Fragment() {
             }
         }
         binding?.btnNext?.setOnClickListener { btnNext ->
+            viewModel.saveData()
             when (viewModel.accountType) {
                 AccountType.Supervisor -> btnNext
                     .findNavController()

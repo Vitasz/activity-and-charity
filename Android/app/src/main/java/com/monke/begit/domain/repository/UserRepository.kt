@@ -4,10 +4,14 @@ import com.monke.begit.domain.model.User
 
 interface UserRepository {
 
-    fun getAuthorizedUser(): User?
+    fun getUser(): User
 
-    suspend fun createUser(user: User)
+    fun saveUser(user: User)
 
     suspend fun getUserByEmail(email: String): Result<User?>
+
+    fun createUser(): Result<Any?>
+
+
 
 }
