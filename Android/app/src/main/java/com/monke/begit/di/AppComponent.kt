@@ -10,7 +10,7 @@ import dagger.BindsInstance
 import dagger.Component
 
 @AppScope
-@Component(modules = [UserModule::class, NetworkModule::class])
+@Component(modules = [UserModule::class, NetworkModule::class, SubdivisionModule::class])
 interface AppComponent {
 
     fun inject(signUpFragment: SignUpFragment)

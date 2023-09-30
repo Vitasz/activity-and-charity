@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
+import com.monke.begit.App
 import com.monke.begit.R
 import com.monke.begit.databinding.FragmentSupervisorSignUpBinding
 import com.monke.begit.domain.exceptions.IncorrectPasswordException
@@ -19,11 +21,15 @@ import com.monke.begit.domain.exceptions.NoUserFoundException
 import com.monke.begit.ui.uiModels.UiState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class SupervisorSignUpFragment : Fragment() {
 
 
-    private lateinit var viewModel: SupervisorSignUpViewModel
+    @Inject
+    lateinit var factory: SupervisorSignUpViewModel.Factory
+    private val viewModel: SupervisorSignUpViewModel by viewModels { factory }
+
     private var binding: FragmentSupervisorSignUpBinding? = null
 
     override fun onCreateView(
@@ -32,6 +38,7 @@ class SupervisorSignUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSupervisorSignUpBinding.inflate(inflater, container, false)
+        (activity?.application as App).appComponent.inject(this)
         return inflater.inflate(R.layout.fragment_supervisor_sign_up, container, false)
     }
 
@@ -42,7 +49,11 @@ class SupervisorSignUpFragment : Fragment() {
             viewModel.signUp()
         }
 
-
+        setupNameEditText()
+        setupPasswordEditText()
+        setupSubdivisionNameEditText()
+        setupSurnameEditText()
+        setupRepeatedPasswordEditText()
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -120,14 +131,14 @@ class SupervisorSignUpFragment : Fragment() {
         })
     }
 
-    private fun setupCodeEditText() {
-        binding?.inputRepeatedPassword?.addTextChangedListener(object : TextWatcher {
+    private fun setupSubdivisionNameEditText() {
+        binding?.inputSubdivisionName?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun afterTextChanged(text: Editable?) {
-                text?.let { viewModel.repeatedPassword = text.toString() }
+                text?.let { viewModel.subdivisionName = text.toString() }
             }
         })
     }
