@@ -6,68 +6,72 @@ import com.monke.begit.data.remote.PhysicalActivity
 import com.monke.begit.data.remote.User
 import com.monke.begit.data.remote.UserTop
 import io.reactivex.Single
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
 
 // API для сервера приложения
+
 interface API {
-
-    @GET("/LoginUser")
+    @GET("/get_activities")
     @Headers("Content-Type: application/json")
-    fun loginUser(@Query("username") username: String,
-                  @Query("password") password: String): Single<User>
+    suspend fun getActivities(): Response<ArrayList<PhysicalActivity>>
 
-    @GET("/LoginSupervisor")
+    @GET("/get_top")
     @Headers("Content-Type: application/json")
-    fun loginSupervisor(@Query("username") username: String,
-                        @Query("password") password: String): Single<User>
+    suspend fun getTop(): Response<ArrayList<UserTop>>
 
-    @GET("/GetActivities")
+    @GET("/get_activities_supervisor")
     @Headers("Content-Type: application/json")
-    fun getActivities(@Query("userId") userId: Int): Single<ArrayList<PhysicalActivity>>
+    suspend fun getActivitiesSupervisor(): Response<ArrayList<PhysicalActivity>>
 
-    @GET("/GetTop")
+    @GET("/get_funds")
     @Headers("Content-Type: application/json")
-    fun getTop(): Single<ArrayList<UserTop>>
+    suspend fun getFunds(): Response<ArrayList<Fund>>
 
-    @GET("/GetActivitiesSupervisor")
+    @GET("/get_fund_by_id")
     @Headers("Content-Type: application/json")
-    fun getTop(@Query("id") idSubdivision: Int): Single<ArrayList<PhysicalActivity>>
+    suspend fun getFundById(@Query("fundId") findId: Int): Response<String>
 
-    @GET("/GetFunds")
+    @GET("/get_subdivision_by_id")
     @Headers("Content-Type: application/json")
-    fun getFunds(): Single<ArrayList<Fund>>
+    suspend fun getSubdivisionById(@Query("subdivisionId") subdivisionId: Int): Response<String>
 
-    @POST("/RegisterUser")
+    data class RequestBodyRegister(var username:String, var password: String,
+                                   var email: String, var name: String)
+    @POST("/register_user")
     @Headers("Content-Type: application/json")
-    fun registerUser(@Query("username") username: String,
-                     @Query("password") password: String,
-                     @Query("email") email: String,
-                     @Query("name") name:String): Single<Boolean>
+    suspend fun registerUser(@Body body: RequestBodyRegister): Response<String>
 
-    @POST("/RegisterSupervisor")
+    @POST("/register_supervisor")
     @Headers("Content-Type: application/json")
-    fun registerSupervisor(@Query("username") username: String,
-                           @Query("password") password: String,
-                           @Query("email") email: String,
-                           @Query("name") name:String): Single<Boolean>
+    suspend fun registerSupervisor(@Body body: RequestBodyRegister): Response<String>
 
-    @POST("/SelectFund")
+    data class RequestBodyLogin(var username:String, var password: String)
+    @POST("/login")
     @Headers("Content-Type: application/json")
-    fun selectFund(@Query("username") username:String,
-                   @Query("id") funId: Int): Single<Boolean>
+    suspend fun loginUser(@Body body: RequestBodyLogin): Response<User>
 
-    @POST("/SelectSubdivision")
+    @POST("/login_supervisor")
     @Headers("Content-Type: application/json")
-    fun selectSubdivision(@Query("username") username:String,
-                   @Query("id") funId: Int): Single<Boolean>
+    suspend fun loginSupervisor(@Body body: RequestBodyLogin): Response<User>
 
-    @POST("/AddActivity")
+    data class RequestBodySelectFund(var fundId: Int)
+    @POST("/select_fund")
     @Headers("Content-Type: application/json")
-    fun addActivity(@Query("userId") userId: Int,
-                    @Query("typeId") typeId: Int,
-                    @Query("value") value: Double,
-                    @Query("date") date: String): Single<Boolean>
+    suspend fun selectFund(@Body body: RequestBodySelectFund): Single<String>
+
+    data class RequestBodySelectSubdivision(var subdivisionId:Int)
+    @POST("/select_subdivision")
+    @Headers("Content-Type: application/json")
+    suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Single<String>
+
+
+    data class RequestBodyAddActivity(var typeId: Int, val value: Double, var data: String)
+    @POST("/add_activity")
+    @Headers("Content-Type: application/json")
+    suspend fun addActivity(@Body body: RequestBodyAddActivity): Single<String>
 }

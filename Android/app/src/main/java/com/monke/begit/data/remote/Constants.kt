@@ -5,7 +5,7 @@ import com.google.android.gms.fitness.data.DataType
 
 class Constants {
     companion object{
-        const val APIUrl = "http://89.185.85.184:8000/"
+        const val APIUrl = "http://89.185.85.184:5000/"
         val FITNESS_ACTIVITIES = arrayListOf<String>(FitnessActivities.RUNNING, FitnessActivities.BIKING,
                                                      FitnessActivities.WALKING, FitnessActivities.STRENGTH_TRAINING)
 

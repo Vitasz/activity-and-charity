@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.monke.begit.domain.exceptions.IncorrectPasswordException
 import com.monke.begit.domain.exceptions.NoUserFoundException
+import com.monke.begit.domain.model.User
 import com.monke.begit.domain.repository.UserRepository
 import com.monke.begit.ui.uiModels.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -44,15 +45,11 @@ class SignInViewModel(
     fun signIn() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            val result = userRepository.getUserByEmail(email.value)
+            val result = userRepository.loginUser()
             if (result.isSuccess) {
-                val user = result.getOrNull()
-                if (user == null)
-                    _uiState.value = UiState.Error(NoUserFoundException())
-                else if (user.password == password.value )
-                    _uiState.value = UiState.Success()
-                else
-                    _uiState.value = UiState.Error(IncorrectPasswordException())
+                val user = result.getOrNull() as User
+                userRepository.saveUser(user)
+                _uiState.value = UiState.Success()
             } else
                 result.exceptionOrNull()?.let { _uiState.value = UiState.Error(it) }
 
