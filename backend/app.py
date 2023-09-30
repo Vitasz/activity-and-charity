@@ -1,4 +1,5 @@
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, Response
+from flask_cors import CORS
 import re
 
 from database import SQLiter
@@ -22,8 +23,17 @@ def check_password(password):
 
 
 app = Flask(__name__)
+CORS(app)
 app.config["SECRET_KEY"] = "mysecretkey"
 db = SQLiter()
+
+
+@app.before_request
+def handle_preflight():
+    if request.method == "OPTIONS":
+        res = Response()
+        res.headers['X-Content-Type-Options'] = '*'
+        return res
 
 
 @app.route("/")
@@ -36,6 +46,8 @@ def not_found(error):
     resp = make_response("Not found", 404)
     # resp.headers["X-Something"] = "A value"
     return resp
+
+
 
 
 # работает
