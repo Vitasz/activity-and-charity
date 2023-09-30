@@ -26,9 +26,12 @@ def login():
     
     username = data["username"]
     password = data["password"]
+    
     if db.user_exists(username):
         if db.login_user(username, password):
-            resp = make_response("Logged in successfully")
+            res = db.get_user_info(username)
+            res = [res[1], res[3], res[4], res[5] if res[5] is not None else -1, res[6] if res[6] is not None else -1]
+            resp = make_response(res)
             resp.set_cookie("user_id", str(db.get_user_id(username)), secure=True, httponly=True)
             resp.set_cookie("username", username, secure=True, httponly=True)
             return resp
