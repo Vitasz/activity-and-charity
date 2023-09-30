@@ -1,7 +1,5 @@
 package com.monke.begit.ui.mainFeature.trackActivityFeature
 
-import android.opengl.Visibility
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,11 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.monke.begit.App
 import com.monke.begit.R
-import com.monke.begit.databinding.FragmentProfileBinding
 import com.monke.begit.databinding.FragmentTrackActivityBinding
 import com.monke.begit.ui.uiModels.SportActivityState
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import javax.inject.Inject
 
 class TrackActivityFragment : Fragment() {
@@ -43,6 +41,7 @@ class TrackActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupStopButton()
+        setupStopWatch()
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -76,9 +75,21 @@ class TrackActivityFragment : Fragment() {
         }
     }
 
+    private fun setupStopWatch() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.timeSeconds.collect {
+                    val current = Calendar.getInstance().apply { timeInMillis = it*1000L }
+                    val formatter = SimpleDateFormat("mm:ss")
+                    binding?.txtStopwatch?.text = formatter.format(current.time)
+                }
+            }
+        }
+    }
+
     private fun setupStopButton() {
         binding?.btnStop?.setOnClickListener {
-            viewModel.stopActivity()
+            viewModel.stopSportActivity()
         }
     }
 
