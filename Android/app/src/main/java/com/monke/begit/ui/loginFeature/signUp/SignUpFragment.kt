@@ -1,16 +1,23 @@
 package com.monke.begit.ui.loginFeature.signUp
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.monke.begit.App
 import com.monke.begit.R
 import com.monke.begit.databinding.FragmentSignUpBinding
 import com.monke.begit.domain.model.AccountType
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SignUpFragment : Fragment() {
@@ -35,12 +42,41 @@ class SignUpFragment : Fragment() {
         setupToolbar()
         setupNextBtn()
         setupRadioGroup()
+
+        setupEmailEditText()
+        setupLoginEditText()
     }
 
     private fun setupToolbar() {
         binding?.toolbar?.setNavigationOnClickListener {
             it.findNavController().popBackStack()
         }
+    }
+
+    private fun setupEmailEditText() {
+        binding?.inputEditTxtEmail?.setText(viewModel.email.value)
+        binding?.inputEditTxtEmail?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(text: Editable?) {
+                viewModel.setEmail(text.toString())
+            }
+        })
+    }
+
+    private fun setupLoginEditText() {
+        binding?.inputEditTxtLogin?.setText(viewModel.login.value)
+        binding?.inputEditTxtLogin?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun afterTextChanged(text: Editable?) {
+                viewModel.setLogin(text.toString())
+            }
+        })
     }
 
     private fun setupRadioGroup() {
@@ -57,6 +93,11 @@ class SignUpFragment : Fragment() {
     }
 
     private fun setupNextBtn() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dataIsValid.collect { binding?.btnNext?.isEnabled = it }
+            }
+        }
         binding?.btnNext?.setOnClickListener { btnNext ->
             when (viewModel.accountType) {
                 AccountType.Supervisor -> btnNext

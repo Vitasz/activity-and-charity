@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.monke.begit.R
 import com.monke.begit.databinding.FragmentSignInBinding
 
@@ -28,8 +29,9 @@ class SignInFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
+        binding?.btnSignIn?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_signInFragment_to_mainFragment)
+        }
     }
 
 

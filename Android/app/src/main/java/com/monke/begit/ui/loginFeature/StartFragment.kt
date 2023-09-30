@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 class StartFragment : Fragment() {
 
-    private lateinit var viewModel: StartViewModel
 
     private var binding: FragmentStartBinding? = null
 
