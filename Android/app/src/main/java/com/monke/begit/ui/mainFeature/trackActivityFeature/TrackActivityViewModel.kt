@@ -3,6 +3,7 @@ package com.monke.begit.ui.mainFeature.trackActivityFeature
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.monke.begit.domain.repository.SportRepository
 import com.monke.begit.ui.uiModels.SportActivityState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -13,7 +14,9 @@ import kotlinx.coroutines.launch
 import java.security.MessageDigest
 import javax.inject.Inject
 
-class TrackActivityViewModel : ViewModel() {
+class TrackActivityViewModel(
+    private val sportRepository: SportRepository
+) : ViewModel() {
 
     private val _sportActivityState = MutableStateFlow(SportActivityState.Play)
     val sportActivityState = _sportActivityState.asStateFlow()
@@ -21,7 +24,12 @@ class TrackActivityViewModel : ViewModel() {
     private val _timeSeconds = MutableStateFlow(0)
     val timeSeconds = _timeSeconds.asStateFlow()
 
+    private val _moneyEarned = MutableStateFlow(0)
+    val moneyEarned = _moneyEarned.asStateFlow()
+
     private lateinit var stopWatchJob: Job
+
+    val trackedActivity = sportRepository.getTrackedSportActivity()
 
 
     init {
@@ -61,12 +69,12 @@ class TrackActivityViewModel : ViewModel() {
     }
 
     class Factory @Inject constructor(
-
+        private val sportRepository: SportRepository
     ): ViewModelProvider.Factory {
 
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return TrackActivityViewModel(
-
+                sportRepository = sportRepository
             ) as T
         }
     }

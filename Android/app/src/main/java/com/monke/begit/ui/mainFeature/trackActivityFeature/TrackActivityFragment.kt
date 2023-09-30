@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import javax.inject.Inject
 
-class TrackActivityFragment : Fragment() {
+class TrackActivityFragment: Fragment() {
 
     @Inject
     lateinit var factory: TrackActivityViewModel.Factory
@@ -42,6 +42,8 @@ class TrackActivityFragment : Fragment() {
 
         setupStopButton()
         setupStopWatch()
+        setupTextActivityName()
+        setupMoneyText()
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -73,6 +75,20 @@ class TrackActivityFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupMoneyText() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.moneyEarned.collect {
+                    binding?.txtMoney?.text = getString(R.string.earned) + " $it₽"
+                }
+            }
+        }
+    }
+
+    private fun setupTextActivityName() {
+        viewModel.trackedActivity?.let { binding?.txtActivityName?.text = it.name }
     }
 
     private fun setupStopWatch() {

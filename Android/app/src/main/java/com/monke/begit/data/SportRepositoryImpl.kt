@@ -20,5 +20,7 @@ class SportRepositoryImpl @Inject constructor(): SportRepository {
         trackedSportActivity = sportActivity
     }
 
+    override fun getTrackedSportActivity() = trackedSportActivity
+
 
 }

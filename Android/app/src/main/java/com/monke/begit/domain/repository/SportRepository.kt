@@ -8,4 +8,6 @@ interface SportRepository {
 
     fun setTrackedSportActivity(sportActivity: SportActivity)
 
+    fun getTrackedSportActivity(): SportActivity?
+
 }

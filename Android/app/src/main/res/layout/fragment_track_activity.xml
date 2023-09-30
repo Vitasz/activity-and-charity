@@ -30,13 +30,13 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_activity_name" />
 
     <TextView
-        android:id="@+id/txt_calories"
+        android:id="@+id/txt_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="3 cal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_stopwatch" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_stopwatch"
+        tools:text="3 рубля" />
 
     <ImageView
         android:id="@+id/btn_play"
