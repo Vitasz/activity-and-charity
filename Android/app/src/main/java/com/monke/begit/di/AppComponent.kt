@@ -1,6 +1,7 @@
 package com.monke.begit.di
 
 import android.app.Application
+import android.app.admin.NetworkEvent
 import com.monke.begit.ui.loginFeature.SignInFragment
 import com.monke.begit.ui.loginFeature.signUp.EmployeeSignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
@@ -9,7 +10,7 @@ import dagger.BindsInstance
 import dagger.Component
 
 @AppScope
-@Component(modules = [UserModule::class])
+@Component(modules = [UserModule::class, NetworkModule::class])
 interface AppComponent {
 
     fun inject(signUpFragment: SignUpFragment)

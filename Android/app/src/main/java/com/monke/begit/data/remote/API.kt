@@ -1,4 +1,4 @@
-package com.example.uwasting.data.remote
+package com.monke.begit.data.remote
 
 
 import com.monke.begit.data.remote.Fund
