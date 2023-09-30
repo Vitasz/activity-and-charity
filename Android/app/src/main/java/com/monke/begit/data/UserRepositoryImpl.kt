@@ -9,11 +9,8 @@ import com.monke.begit.domain.model.AccountType
 import com.monke.begit.domain.model.Subdivision
 import com.monke.begit.domain.model.User
 import com.monke.begit.domain.repository.UserRepository
-import java.security.MessageDigest
-import java.util.Base64
 import javax.inject.Inject
 
-@AppScope
 class UserRepositoryImpl @Inject constructor(
     private val api: API
 ) : UserRepository {

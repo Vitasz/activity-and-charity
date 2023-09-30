@@ -74,5 +74,23 @@
         android:id="@+id/mainFragment"
         android:name="com.monke.begit.ui.mainFeature.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_selectActivityFragment"
+            app:destination="@id/selectActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectActivityFragment"
+        android:name="com.monke.begit.ui.mainFeature.activityFeature.SelectActivityFragment"
+        android:label="fragment_select_activity"
+        tools:layout="@layout/fragment_select_activity" >
+        <action
+            android:id="@+id/action_selectActivityFragment_to_trackActivityFragment"
+            app:destination="@id/trackActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackActivityFragment"
+        android:name="com.monke.begit.ui.mainFeature.trackActivityFeature.TrackActivityFragment"
+        android:label="fragment_track_activity"
+        tools:layout="@layout/fragment_track_activity" />
 </navigation>
