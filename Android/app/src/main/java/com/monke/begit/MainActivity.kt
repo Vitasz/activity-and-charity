@@ -27,7 +27,6 @@ import java.time.LocalDate
 
 private const val GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 1001
 class MainActivity : AppCompatActivity() {
-    private lateinit var api: API
     private lateinit var googleFitAPI: GoogleFitAPI
 
 
@@ -66,25 +65,5 @@ Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCA
     }
     private fun endActivity(){
         googleFitAPI.EndSession()
-    }
-    // Настройка подключения к серверу
-    private fun configureRetrofit() {
-        val gson = GsonBuilder().registerTypeAdapter(LocalDate::class.java, LocalDateDeserializer()).create()
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.APIUrl)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-
-        api = retrofit.create(API::class.java)
-
     }
 }

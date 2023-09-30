@@ -10,7 +10,10 @@ interface UserRepository {
 
     suspend fun getUserByEmail(email: String): Result<User?>
 
-    fun createUser(): Result<Any?>
+    suspend fun createUser(): Result<Any?>
+    suspend fun createSupervisor(): Result<Any?>
+    suspend fun loginUser(): Result<Any?>
+    suspend fun loginSupervisor(): Result<Any?>
 
 
 
