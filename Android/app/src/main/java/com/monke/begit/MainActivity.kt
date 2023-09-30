@@ -8,6 +8,9 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.example.uwasting.data.LocalDateDeserializer
 import com.monke.begit.data.remote.API
 import com.google.gson.GsonBuilder
@@ -27,6 +30,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var api: API
     private lateinit var googleFitAPI: GoogleFitAPI
 
+
+
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         //setupGoogleFit()
         //api.getActivities(1)
         setContentView(R.layout.activity_main)
-
 
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)

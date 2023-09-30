@@ -1,6 +1,7 @@
 package com.monke.begit.domain
 
 import com.monke.begit.domain.model.AccountType
+import com.monke.begit.domain.model.SportActivity
 import com.monke.begit.domain.model.Subdivision
 import com.monke.begit.domain.model.User
 
@@ -41,4 +42,11 @@ val mockedUsers = listOf(
         email = "1234567@org.com",
         accountType = AccountType.Supervisor,
         subdivision = mockedSubdivisions[0])
+)
+
+val mockedActivities = listOf(
+    SportActivity("Бегит"),
+    SportActivity("Турнык"),
+    SportActivity("Пресс качат"),
+    SportActivity("Анжуманя"),
 )
