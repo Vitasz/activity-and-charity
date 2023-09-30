@@ -1,6 +1,5 @@
 package com.monke.begit.ui.mainFeature.activityFeature
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,14 +8,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import com.monke.begit.App
-import com.monke.begit.MainActivity
 import com.monke.begit.R
 import com.monke.begit.databinding.FragmentSelectActivityBinding
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SelectActivityFragment : Fragment() {
@@ -42,24 +37,30 @@ class SelectActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupActivitiesMenu()
+        setupPlayButton()
     }
 
 
     private fun setupActivitiesMenu() {
-
         val menu = binding?.menu
         val adapter = ArrayAdapter(
             requireContext(),
             R.layout.item_sport_acivity,
             viewModel.sportActivities.map { it.name })
-        viewModel.selectedActivity?.let {
-            (menu?.editText as? AutoCompleteTextView)?.setText(it.name)
-        }
+        (menu?.editText as? AutoCompleteTextView)?.setText(viewModel.selectedActivity.name)
         (menu?.editText as? AutoCompleteTextView)?.setAdapter(adapter)
         (menu?.editText as? AutoCompleteTextView)?.setOnItemClickListener { adapterView, view, index, l ->
             viewModel.selectedActivity = viewModel.sportActivities[index]
         }
     }
+
+    private fun setupPlayButton() {
+        binding?.btnStart?.setOnClickListener {
+            it.findNavController()
+                .navigate(R.id.action_selectActivityFragment_to_trackActivityFragment)
+        }
+    }
+
 
 
 

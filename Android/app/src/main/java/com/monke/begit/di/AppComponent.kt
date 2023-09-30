@@ -9,6 +9,7 @@ import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
 import com.monke.begit.ui.mainFeature.activityFeature.SelectActivityFragment
 import com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment
+import com.monke.begit.ui.mainFeature.trackActivityFeature.TrackActivityFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -32,6 +33,8 @@ interface AppComponent {
     fun inject(profileFragment: ProfileFragment)
 
     fun inject(selectActivityFragment: SelectActivityFragment)
+
+    fun inject(trackActivityFragment: TrackActivityFragment)
 
 
 

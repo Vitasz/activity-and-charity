@@ -14,13 +14,14 @@ class SelectActivityViewModel (
 
     lateinit var sportActivities: List<SportActivity>
 
-    var selectedActivity: SportActivity? = null
+    lateinit var selectedActivity: SportActivity
 
     init {
         viewModelScope.launch {
             val request = sportRepository.getActivitiesList()
             if (request.isSuccess) {
                 sportActivities = request.getOrNull() ?: ArrayList<SportActivity>()
+                selectedActivity = sportActivities[0]
             }
         }
     }
