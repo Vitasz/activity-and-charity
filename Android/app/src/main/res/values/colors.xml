@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="background">#FFfbffff</color>
+    <color name="primary">#FF20305c</color>
+    <color name="onPrimary">#FFfbffff</color>
+    <color name="surface">#FFfbffff</color>
+    <color name="onSurface">#FF20305c</color>
+    <color name="secondary">#d4eeff</color>
+    <color name="onSecondary">#FF20305c</color>
+    <color name="tertiary">#FFffe0a1</color>
+    <color name="gray">#FF808080</color>
+
+    <color name="red">#FFEE2C2C</color>
+    <color name="divider">#FFB3B3B3</color>
+    <color name="primaryDark">#0B1532</color>
+    <color name="green">#02BD2B</color>
+    <color name="error">#FFEE2C2C</color>
+
 </resources>

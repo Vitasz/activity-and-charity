@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">begIt</string>
+    <string name="welcome">Пора делать добрые дела!</string>
+    <string name="sign_in">Войти</string>
+    <string name="signUp">Регистрация</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="employee">Работник</string>
+    <string name="supervisor">Руководитель</string>
 </resources>
