@@ -1,7 +1,22 @@
 from flask import Flask, make_response, request
-import sys
+import re
 
 from database import SQLiter
+
+def check_email(email):
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if re.match(pattern, email):
+        return True
+    else:
+        return False
+
+def check_password(password):
+    # regexp check for SHA256 hash
+    pattern = r'^[a-fA-F0-9]{64}$'
+    if re.match(pattern, password):
+        return True
+    else:
+        return False
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "mysecretkey"
@@ -23,14 +38,16 @@ def not_found(error):
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
-    
+    if "username" not in data or "password" not in data:
+        return "Invalid request", 400
+
     username = data["username"]
     password = data["password"]
     
     if db.user_exists(username):
         if db.login_user(username, password):
             res = db.get_user_info(username)
-            res = [res[1], res[3], res[4], res[5] if res[5] is not None else -1, res[6] if res[6] is not None else -1]
+            res = {'username':res[1], 'email':res[3], 'name':res[4], 'selectedFund':res[5] if res[5] is not None else -1, 'idSubdivision':res[6] if res[6] is not None else -1}
             resp = make_response(res)
             resp.set_cookie("user_id", str(db.get_user_id(username)), secure=True, httponly=True)
             resp.set_cookie("username", username, secure=True, httponly=True)
@@ -45,11 +62,16 @@ def login():
 @app.route("/login_supervisor", methods=["POST"])
 def login_supervisor():
     data = request.get_json()
+    if "username" not in data or "password" not in data:
+        return "Invalid request", 400
+    
     username = data["username"]
     password = data["password"]
     if db.supervisor_exists(username):
         if db.login_supervisor(username, password):
-            resp = make_response("Logged in successfully")
+            res = db.get_supervisor_info(username)
+            res = {'username':res[1], 'email':res[3], 'name':res[4], 'selectedFund':res[5] if res[5] is not None else -1}
+            resp = make_response(res)
             resp.set_cookie("supervisor_id", str(db.get_supervisor_id(username)), secure=True, httponly=True)
             resp.set_cookie("supervisor_username", username, secure=True, httponly=True)
             return resp
@@ -62,21 +84,30 @@ def login_supervisor():
 # работает
 @app.route("/get_activities", methods=["GET"])
 def get_activities():
+    if "user_id" not in request.cookies:
+        return "Not authorized", 403
     user_id = request.cookies.get("user_id")
-    return db.get_user_activities(user_id)
-
+    res = db.get_user_activities(user_id)
+    res = [{'idType':i[1], 'value':i[2], 'date':i[3]} for i in res]
+    return res, 200
 
 # работает
 @app.route("/get_top", methods=["GET"])
 def get_top():
-    return db.get_top_users()
+    res = db.get_top_users()
+    res = [{'name':i[0], 'value':i[1]} for i in res]
+    return res, 200
 
 
 # работает
 @app.route("/get_activities_supervisor", methods=["GET"])
 def get_activities_supervisor():
+    if "supervisor_id" not in request.cookies:
+        return "Not authorized", 403
     id_subdivision = request.cookies.get("supervisor_id")
-    return db.get_subdivision_activities(id_subdivision)
+    res = db.get_subdivision_activities(id_subdivision)
+    res = [{'idType':i[1], 'value':i[2], 'date':i[3]} for i in res]
+    return res, 200
 
 
 # работает
@@ -89,14 +120,18 @@ def get_funds():
 @app.route("/register_user", methods=["POST"])
 def register_user():
     data = request.get_json()
+    if "username" not in data or "password" not in data or "email" not in data or "name" not in data:
+        return "Invalid request", 400
     username = data["username"]
     password = data["password"]
     email = data["email"]
     name = data["name"]
     if db.user_exists(username):
         return "User already exists", 403
-    db.add_user(username, password, email, name)
-    return "User registered", 200
+    if check_email(email) and check_password(password):
+        db.add_user(username, password, email, name)
+        return "User registered", 200
+    return "Invalid email or password", 403
 
 
 # работает

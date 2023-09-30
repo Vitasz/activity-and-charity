@@ -27,6 +27,16 @@ class SQLiter:
         res = self.cursor.fetchall()
         return res[0]
     
+    def get_supervisor_info(self, username):
+        self.cursor.execute("SELECT * FROM supervisors WHERE username = ?", (username,))
+        res = self.cursor.fetchall()
+        return res[0]
+    
+    def get_fund_info(self, username):
+        self.cursor.execute("SELECT * FROM funds WHERE username = ?", (username,))
+        res = self.cursor.fetchall()
+        return res[0]
+    
     def login_user(self, username, password):
         self.cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
         res = self.cursor.fetchall()
