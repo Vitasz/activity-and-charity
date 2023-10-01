@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_activities" />
     <fragment
         android:id="@+id/leaderBoardFragment"
-        android:name="com.monke.begit.ui.mainFeature.LeaderBoardFragment"
+        android:name="com.monke.begit.ui.mainFeature.ratingFeature.LeaderBoardFragment"
         android:label="fragment_leader_board"
         tools:layout="@layout/fragment_leader_board" />
     <fragment

@@ -45,7 +45,7 @@ class SelectActivityFragment : Fragment() {
         val menu = binding?.menu
         val adapter = ArrayAdapter(
             requireContext(),
-            R.layout.item_sport_acivity,
+            R.layout.item_sport_activity,
             viewModel.sportActivities.map { it.name })
         (menu?.editText as? AutoCompleteTextView)?.setText(viewModel.selectedActivity.name)
         (menu?.editText as? AutoCompleteTextView)?.setAdapter(adapter)

@@ -6,6 +6,7 @@
     tools:context=".ui.mainFeature.activityFeature.ActivitiesFragment">
 
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

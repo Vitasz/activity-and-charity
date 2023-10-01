@@ -10,6 +10,7 @@ import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
 import com.monke.begit.ui.mainFeature.activityFeature.ActivitiesFragment
 import com.monke.begit.ui.mainFeature.activityFeature.SelectActivityFragment
 import com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment
+import com.monke.begit.ui.mainFeature.ratingFeature.LeaderBoardFragment
 import com.monke.begit.ui.mainFeature.trackActivityFeature.TrackActivityFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -39,7 +40,7 @@ interface AppComponent {
 
     fun inject(activitiesFragment: ActivitiesFragment)
 
-
+    fun inject(leaderBoardFragment: LeaderBoardFragment)
 
     @Component.Builder
     interface Builder {
