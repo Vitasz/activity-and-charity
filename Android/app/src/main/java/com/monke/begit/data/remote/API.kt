@@ -8,7 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
-import java.util.Date
 
 // API для сервера приложения
 
@@ -27,7 +26,7 @@ interface API {
 
     @GET("/get_funds")
     @Headers("Content-Type: application/json")
-    suspend fun getFunds(): Response<ArrayList<Fund>>
+    suspend fun getFunds(): Response<ArrayList<FundRemote>>
 
     @GET("/get_fund_by_id")
     @Headers("Content-Type: application/json")

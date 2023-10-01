@@ -18,6 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkModule {
 
     @Provides
+    @AppScope
     fun provideRetrofit(): Retrofit {
         val okHttpBuilder = OkHttpClient.Builder().cookieJar(object : CookieJar {
             private val cookieStore = HashMap<HttpUrl?, List<Cookie>>()
@@ -55,6 +56,7 @@ class NetworkModule {
     }
 
     @Provides
+    @AppScope
     fun provideApi(retrofit: Retrofit): API = retrofit.create(API::class.java)
 
 

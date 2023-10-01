@@ -7,7 +7,7 @@ import com.monke.begit.databinding.ItemActivityBinding
 import com.monke.begit.domain.model.SportActivity
 import com.monke.begit.ui.uiModels.LeaderboardUser
 
-class LeaderboardRW(private val users: List<LeaderboardUser>) :
+class LeaderboardRW(private var users: List<LeaderboardUser>) :
     RecyclerView.Adapter<LeaderboardRW.LeaderboardViewHolder>() {
 
 
@@ -28,6 +28,12 @@ class LeaderboardRW(private val users: List<LeaderboardUser>) :
             false)
         return LeaderboardViewHolder(binding)
     }
+
+    fun setItems(users: List<LeaderboardUser>) {
+        this.users = users
+        notifyDataSetChanged()
+    }
+
 
     override fun getItemCount(): Int = users.count()
 

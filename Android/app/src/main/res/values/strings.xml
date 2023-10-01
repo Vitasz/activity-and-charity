@@ -24,6 +24,9 @@
     <string name="activity_type">Выберите активность</string>
     <string name="start">Начать</string>
     <string name="earned">Заработано</string>
+    <string name="search_fund_hint">Давайте найдем фонд!</string>
+    <string name="search_fund">Поиск фонда</string>
+    <string name="funds">Фонды</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

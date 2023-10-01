@@ -9,6 +9,8 @@ import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
 import com.monke.begit.ui.mainFeature.activityFeature.ActivitiesFragment
 import com.monke.begit.ui.mainFeature.activityFeature.SelectActivityFragment
+import com.monke.begit.ui.mainFeature.fundFeature.SearchFundFragment
+import com.monke.begit.ui.mainFeature.fundFeature.SearchFundViewModel
 import com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment
 import com.monke.begit.ui.mainFeature.ratingFeature.LeaderBoardFragment
 import com.monke.begit.ui.mainFeature.trackActivityFeature.TrackActivityFragment
@@ -20,7 +22,8 @@ import dagger.Component
     UserModule::class,
     NetworkModule::class,
     SubdivisionModule::class,
-    SportModule::class
+    SportModule::class,
+    FundModule::class
 ])
 interface AppComponent {
 
@@ -41,6 +44,8 @@ interface AppComponent {
     fun inject(activitiesFragment: ActivitiesFragment)
 
     fun inject(leaderBoardFragment: LeaderBoardFragment)
+
+    fun inject(searchFundFragment: SearchFundFragment)
 
     @Component.Builder
     interface Builder {

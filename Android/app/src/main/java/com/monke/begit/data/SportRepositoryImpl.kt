@@ -27,14 +27,14 @@ class SportRepositoryImpl @Inject constructor(
     init {
         activitiesList.add(
             SportActivity(
-                name = "Анжуманя",
+                name = "Бег",
                 id = 1,
                 moneyEarned = 123
             )
         )
         activitiesList.add(
             SportActivity(
-                name = "Пресс качат",
+                name = "Силовая тренировка",
                 id = 2,
                 moneyEarned = 1233
             )

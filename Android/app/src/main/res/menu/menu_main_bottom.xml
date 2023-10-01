@@ -14,4 +14,8 @@
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
         android:title="@string/profile" />
+    <item
+        android:id="@+id/searchFundFragment"
+        android:icon="@drawable/ic_fund"
+        android:title="@string/funds" />
 </menu>
