@@ -43,24 +43,24 @@ class SportRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getActivitiesList() = activitiesList
-//        withContext(Dispatchers.IO) {
-//            return@withContext Result.success()
-//        try {
-//            val res = api.getActivities()
-//            if (res.isSuccessful) {
-//                Log.d("SportRepository", "Success")
-//                return@withContext Result.success(null)
-//            } else {
-//                Log.d("SportRepository", res.message() + "${res.code()}")
-//                return@withContext Result.failure(IncorrectPasswordException())
-//            }
-//        } catch (e: Exception) {
-//            Log.e("EXCEPTION", e.message.toString())
-//            return@withContext Result.failure(e)
-//        }
+    override suspend fun getActivitiesList(): Result<Any?>{
+        try
+        {
+            val res = api.getActivities()
+            if (res.isSuccessful) {
+                Log.d("SportRepository", "Success")
+                return Result.success(res.body())
+            } else {
+                Log.d("SportRepository", res.message() + "${res.code()}")
+                return Result.failure(IncorrectPasswordException())
+            }
+        } catch (e: Exception)
+        {
+            Log.e("EXCEPTION", e.message.toString())
+            return Result.failure(e)
+        }
+    }
 
-   // }
 
 
     override fun setTrackedSportActivity(sportActivity: SportActivity) {
@@ -70,35 +70,31 @@ class SportRepositoryImpl @Inject constructor(
     override fun getTrackedSportActivity() = trackedSportActivity
 
 
-    override suspend fun addActivity(sportActivity: SportActivity): Result<Any?> {
+    /*  override suspend fun addActivity(sportActivity: SportActivity): Result<Any?> {
         activitiesList.add(sportActivity)
         return Result.success(null)
+    }*/
+
+
+    override suspend fun addActivity(sportActivity: SportActivity): Result<Any?> {
+        try {
+            val res = api.addActivity(
+                API.RequestBodyAddActivity(
+                    typeId = sportActivity.id + 1,
+                    value = sportActivity.moneyEarned,
+                    date = "2002-09-09"
+                )
+            )
+            if (res.isSuccessful) {
+                Log.d("SportRepository", "Success")
+                return Result.success(null)
+            } else {
+                Log.d("SportRepository", res.message() + "${res.code()}")
+                return Result.failure(IncorrectPasswordException())
+            }
+        } catch (e: Exception) {
+            Log.e("EXCEPTION", e.message.toString())
+            return Result.failure(e)
+        }
     }
-
 }
-
-//    override suspend fun addActivity(sportActivity: SportActivity): Result<Any?>
-////        withContext(Dispatchers.IO) {
-////
-////            try {
-////                val res = api.addActivity(API.RequestBodyAddActivity(
-////                    typeId = sportActivity.id + 1,
-////                    value = sportActivity.moneyEarned,
-////                    date = "2002-09-09"
-////                ))
-////                if (res.isSuccessful) {
-////                    Log.d("SportRepository", "Success")
-////                    return@withContext Result.success(null)
-////                }
-////                else {
-////                    Log.d("SportRepository", res.message() + "${res.code()}")
-////                    return@withContext Result.failure(IncorrectPasswordException())
-////                }
-////            } catch (e: Exception) {
-////                Log.e("EXCEPTION", e.message.toString())
-////                return@withContext Result.failure(e)
-////            }
-////
-////        }
-//
-//}

@@ -15,6 +15,9 @@ interface UserRepository {
     suspend fun loginUser(username: String, password: String): Result<Any?>
     suspend fun loginSupervisor(): Result<Any?>
 
+    suspend fun getTop10(): Result<Any?>
+
+
 
 
 }
