@@ -40,8 +40,4 @@ class LeaderboardRW(private var users: List<LeaderboardUser>) :
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
         holder.bind(users[position])
     }
-    fun setItems(users: List<LeaderboardUser>) {
-        this.users = users
-        notifyDataSetChanged()
-    }
 }
