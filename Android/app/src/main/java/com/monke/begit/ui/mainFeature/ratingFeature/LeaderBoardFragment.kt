@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.monke.begit.App
 import com.monke.begit.databinding.FragmentLeaderBoardBinding
 import com.monke.begit.domain.repository.UserRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LeaderBoardFragment: Fragment() {
@@ -34,14 +38,20 @@ class LeaderBoardFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val adapter = LeaderboardRW(viewModel.leaderBoardUsers)
+        val adapter = LeaderboardRW(viewModel.leaderBoardUsers.value)
         binding?.listLeaderboard?.adapter = adapter
         binding?.listLeaderboard?.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.VERTICAL,
             false
         )
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.leaderBoardUsers.collect {
+                    adapter.setItems(it)
+                }
+            }
+        }
 
     }
 

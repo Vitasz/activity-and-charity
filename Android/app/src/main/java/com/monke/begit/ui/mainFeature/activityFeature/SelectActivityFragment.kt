@@ -47,6 +47,7 @@ class SelectActivityFragment : Fragment() {
             requireContext(),
             R.layout.item_sport_activity,
             viewModel.sportActivities.map { it.name })
+
         (menu?.editText as? AutoCompleteTextView)?.setText(viewModel.selectedActivity.name)
         (menu?.editText as? AutoCompleteTextView)?.setAdapter(adapter)
         (menu?.editText as? AutoCompleteTextView)?.setOnItemClickListener { adapterView, view, index, l ->

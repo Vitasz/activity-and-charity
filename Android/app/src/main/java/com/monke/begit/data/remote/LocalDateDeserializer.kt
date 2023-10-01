@@ -21,7 +21,7 @@ internal class LocalDateDeserializer : JsonDeserializer<LocalDate?> {
     ): LocalDate {
         return LocalDate.parse(
             json.asString.substring(0, 10),
-            DateTimeFormatter.ofPattern("yyyy-mm-dd", Locale.ENGLISH)
+            DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
         )
     }
 }

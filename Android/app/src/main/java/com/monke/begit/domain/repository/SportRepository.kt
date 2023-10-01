@@ -4,7 +4,7 @@ import com.monke.begit.domain.model.SportActivity
 
 interface SportRepository {
 
-    fun getActivitiesList(): List<SportActivity>
+    suspend fun getActivitiesList(): Result<Any?>
 
     fun setTrackedSportActivity(sportActivity: SportActivity)
 

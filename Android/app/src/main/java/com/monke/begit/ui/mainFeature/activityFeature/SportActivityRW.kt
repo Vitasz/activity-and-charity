@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.monke.begit.R
+import com.monke.begit.data.remote.PhysicalActivity
 import com.monke.begit.databinding.ItemActivityBinding
 import com.monke.begit.domain.model.SportActivity
+import com.monke.begit.ui.uiModels.LeaderboardUser
 
 class SportActivityRW(
-    private val items: List<SportActivity>
+    private var items: List<SportActivity>
 ) : RecyclerView.Adapter<SportActivityRW.SportActivityViewHolder>() {
 
 
@@ -35,5 +37,8 @@ class SportActivityRW(
     override fun onBindViewHolder(holder: SportActivityViewHolder, position: Int) {
         holder.bind(items[position])
     }
-
+    fun setItems(items: List<SportActivity>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
 }

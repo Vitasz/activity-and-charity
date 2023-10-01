@@ -82,7 +82,7 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun loginUser(username: String, password: String): Result<Any?>{
-        return Result.success(GetUserRemote(username, "test@exmaple.com", "testname", -1, -1))
+       // return Result.success(GetUserRemote(username, "test@exmaple.com", "testname", -1, -1))
         try {
             val response = api.loginUser(
                 LoginUserRemote(
@@ -108,6 +108,22 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun loginSupervisor(): Result<Any?> {
         return try {
             val response = api.loginSupervisor(User.toLoginUser(user))
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                Log.e("Error", response.message() + "${response.code()}")
+                Result.failure(IncorrectPasswordException())
+            }
+        } catch(e: Exception){
+            Log.e("EXCEPTION", e.message.toString())
+            //TODO replace with can;t connect exception
+            Result.failure(IncorrectPasswordException())
+        }
+    }
+
+    override suspend fun getTop10(): Result<Any?> {
+        return try {
+            val response = api.getTop()
             if (response.isSuccessful) {
                 Result.success(response.body())
             } else {

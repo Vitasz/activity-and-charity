@@ -16,7 +16,7 @@ class LeaderboardRW(private var users: List<LeaderboardUser>) :
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(user: LeaderboardUser) {
-            binding.txtActivity.text = user.user.login
+            binding.txtActivity.text = user.name
             binding.txtMoney.text = "${user.moneyEarned}₽"
         }
     }
@@ -40,5 +40,8 @@ class LeaderboardRW(private var users: List<LeaderboardUser>) :
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
         holder.bind(users[position])
     }
-
+    fun setItems(users: List<LeaderboardUser>) {
+        this.users = users
+        notifyDataSetChanged()
+    }
 }

@@ -57,12 +57,12 @@ interface API {
     data class RequestBodySelectFund(var fundId: Int)
     @POST("/select_fund")
     @Headers("Content-Type: application/json")
-    suspend fun selectFund(@Body body: RequestBodySelectFund): Single<Any?>
+    suspend fun selectFund(@Body body: RequestBodySelectFund): Response<Unit>
 
     data class RequestBodySelectSubdivision(var subdivisionId:Int)
     @POST("/select_subdivision")
     @Headers("Content-Type: application/json")
-    suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Single<Any?>
+    suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Response<Unit>
 
 
     data class RequestBodyAddActivity(var typeId: Int, val value: Int, var date: String)
