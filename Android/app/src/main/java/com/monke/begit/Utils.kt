@@ -1,6 +1,8 @@
 package com.monke.begit
 
 import java.security.MessageDigest
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 fun String.md5(): String {
     return hashString(this, "MD5")
@@ -15,4 +17,10 @@ fun hashString(input: String, algorithm: String): String {
         .getInstance(algorithm)
         .digest(input.toByteArray())
         .fold("", { str, it -> str + "%02x".format(it) })
+}
+
+fun getTodayDateString(): String {
+    val current = Calendar.getInstance()
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    return formatter.format(current.time)
 }

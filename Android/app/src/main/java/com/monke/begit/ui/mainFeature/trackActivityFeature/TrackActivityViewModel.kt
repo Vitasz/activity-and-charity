@@ -59,7 +59,6 @@ class TrackActivityViewModel(
             }
         }
     }
-
     fun setMoneyEarned(money: Int) {
         _moneyEarned.value = money
     }
@@ -70,7 +69,15 @@ class TrackActivityViewModel(
 
     fun stopSportActivity() {
         stopWatchJob.cancel()
+        viewModelScope.launch {
+            trackedActivity?.let {
+                sportRepository.addActivity(it.copy(moneyEarned = moneyEarned.value))
+            }
+        }
+
     }
+
+
 
     class Factory @Inject constructor(
         private val sportRepository: SportRepository

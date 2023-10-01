@@ -23,6 +23,7 @@ class SelectActivityViewModel (
             //if (request.isSuccess) {
                 sportActivities = Constants.ACTIVITIES_NAMES//request.getOrNull() ?: ArrayList<SportActivity>()
                 selectedActivity = sportActivities[0]
+
             //}
         }
     }

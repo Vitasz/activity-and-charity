@@ -7,6 +7,7 @@ import com.monke.begit.ui.loginFeature.SignInFragment
 import com.monke.begit.ui.loginFeature.signUp.EmployeeSignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SignUpFragment
 import com.monke.begit.ui.loginFeature.signUp.SupervisorSignUpFragment
+import com.monke.begit.ui.mainFeature.activityFeature.ActivitiesFragment
 import com.monke.begit.ui.mainFeature.activityFeature.SelectActivityFragment
 import com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment
 import com.monke.begit.ui.mainFeature.trackActivityFeature.TrackActivityFragment
@@ -35,6 +36,8 @@ interface AppComponent {
     fun inject(selectActivityFragment: SelectActivityFragment)
 
     fun inject(trackActivityFragment: TrackActivityFragment)
+
+    fun inject(activitiesFragment: ActivitiesFragment)
 
 
 

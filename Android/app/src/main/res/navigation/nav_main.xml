@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/activitiesFragment"
-        android:name="com.monke.begit.ui.mainFeature.ActivitiesFragment"
+        android:name="com.monke.begit.ui.mainFeature.activityFeature.ActivitiesFragment"
         android:label="fragment_activities"
         tools:layout="@layout/fragment_activities" />
     <fragment

@@ -46,8 +46,10 @@ class NetworkModule {
 
         CookieManager.getInstance().setAcceptCookie(true)
 
+        val gson = GsonBuilder().setDateFormat("yyyy-MM-dd").create()
+
         return Retrofit.Builder().baseUrl(Constants.APIUrl)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpBuilder.build())
             .build()
     }

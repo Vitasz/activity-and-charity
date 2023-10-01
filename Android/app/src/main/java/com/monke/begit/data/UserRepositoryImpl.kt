@@ -60,13 +60,11 @@ class UserRepositoryImpl @Inject constructor(
             }
         } catch(e: Exception) {
             Log.e("EXCEPTION", e.message.toString())
-            //TODO replace with can;t connet exception
-            Result.failure(IncorrectPasswordException())
+            Result.failure(e)
         }
     }
 
     override suspend fun createSupervisor(): Result<Any?> {
-        val response = api.registerSupervisor(User.toRemote(user))
 
         return try {
             val response = api.registerSupervisor(User.toRemote(user))

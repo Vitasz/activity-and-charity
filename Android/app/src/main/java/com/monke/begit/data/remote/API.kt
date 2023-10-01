@@ -1,9 +1,6 @@
 package com.monke.begit.data.remote
 
 
-import com.monke.begit.data.remote.Fund
-import com.monke.begit.data.remote.PhysicalActivity
-import com.monke.begit.data.remote.UserTop
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -11,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
+import java.util.Date
 
 // API для сервера приложения
 
@@ -49,7 +47,6 @@ interface API {
     @Headers("Content-Type: application/json")
     suspend fun registerSupervisor(@Body body: PostUserRemote): Response<Unit>
 
-    data class RequestBodyLogin(var username:String, var password: String)
     @POST("/login")
     @Headers("Content-Type: application/json")
     suspend fun loginUser(@Body body: LoginUserRemote): Response<GetUserRemote>
@@ -69,8 +66,8 @@ interface API {
     suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Single<Any?>
 
 
-    data class RequestBodyAddActivity(var typeId: Int, val value: Double, var data: String)
+    data class RequestBodyAddActivity(var typeId: Int, val value: Int, var date: String)
     @POST("/add_activity")
     @Headers("Content-Type: application/json")
-    suspend fun addActivity(@Body body: RequestBodyAddActivity): Single<Any?>
+    suspend fun addActivity(@Body body: RequestBodyAddActivity): Response<Unit>
 }
