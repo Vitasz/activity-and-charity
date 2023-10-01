@@ -15,14 +15,15 @@
         android:name="com.monke.begit.ui.mainFeature.ratingFeature.LeaderBoardFragment"
         android:label="fragment_leader_board"
         tools:layout="@layout/fragment_leader_board" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/searchFundFragment"
         android:name="com.monke.begit.ui.mainFeature.fundFeature.SearchFundFragment"
         android:label="fragment_fund"
         tools:layout="@layout/fragment_serch_fund" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.monke.begit.ui.mainFeature.profileFragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

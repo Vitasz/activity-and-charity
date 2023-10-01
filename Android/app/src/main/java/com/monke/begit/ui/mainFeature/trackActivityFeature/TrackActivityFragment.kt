@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import com.monke.begit.App
 import com.monke.begit.MainActivity
 import com.monke.begit.R
@@ -124,6 +125,7 @@ class TrackActivityFragment: Fragment() {
         binding?.btnStop?.setOnClickListener {
             (activity as MainActivity).googleFitAPI.EndSession()
             viewModel.stopSportActivity()
+            it.findNavController().popBackStack()
         }
     }
 
