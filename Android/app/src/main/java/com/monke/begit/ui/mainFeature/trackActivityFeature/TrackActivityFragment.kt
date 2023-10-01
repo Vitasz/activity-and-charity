@@ -1,5 +1,6 @@
 package com.monke.begit.ui.mainFeature.trackActivityFeature
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +12,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.monke.begit.App
+import com.monke.begit.MainActivity
 import com.monke.begit.R
+import com.monke.begit.data.remote.Constants
+import com.monke.begit.data.remote.GoogleFitAPI
 import com.monke.begit.databinding.FragmentTrackActivityBinding
+import com.monke.begit.domain.model.SportActivity
 import com.monke.begit.ui.uiModels.SportActivityState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -39,11 +45,13 @@ class TrackActivityFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupStopButton()
         setupStopWatch()
         setupTextActivityName()
         setupMoneyText()
+        (activity as MainActivity).googleFitAPI.checkDevicesAndStartSession(
+            Constants.FITNESS_ACTIVITIES[viewModel.trackedActivity!!.id],
+            Constants.DATA_TYPES[viewModel.trackedActivity!!.id])
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -77,11 +85,20 @@ class TrackActivityFragment: Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupMoneyText() {
+        binding?.txtMoney?.text = getString(R.string.earned) + " ${viewModel.moneyEarned.value}₽"
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.moneyEarned.collect {
-                    binding?.txtMoney?.text = getString(R.string.earned) + " $it₽"
+                while (true) {
+                    delay(1000)
+                    SportActivityState.Play
+                    if (viewModel.sportActivityState.value == SportActivityState.Play) {
+                        val summary = (activity as MainActivity).googleFitAPI.sessionSummary
+                        binding?.txtMoney?.text = getString(R.string.earned) +
+                                " $summary₽"
+                        viewModel.setMoneyEarned(summary)
+                    }
                 }
             }
         }
@@ -105,6 +122,7 @@ class TrackActivityFragment: Fragment() {
 
     private fun setupStopButton() {
         binding?.btnStop?.setOnClickListener {
+            (activity as MainActivity).googleFitAPI.EndSession()
             viewModel.stopSportActivity()
         }
     }

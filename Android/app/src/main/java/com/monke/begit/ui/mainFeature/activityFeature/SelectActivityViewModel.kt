@@ -3,6 +3,7 @@ package com.monke.begit.ui.mainFeature.activityFeature
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.monke.begit.data.remote.Constants
 import com.monke.begit.domain.model.SportActivity
 import com.monke.begit.domain.repository.SportRepository
 import kotlinx.coroutines.launch
@@ -18,11 +19,11 @@ class SelectActivityViewModel (
 
     init {
         viewModelScope.launch {
-            val request = sportRepository.getActivitiesList()
-            if (request.isSuccess) {
-                sportActivities = request.getOrNull() ?: ArrayList<SportActivity>()
+            //val request = sportRepository.getActivitiesList()
+            //if (request.isSuccess) {
+                sportActivities = Constants.ACTIVITIES_NAMES//request.getOrNull() ?: ArrayList<SportActivity>()
                 selectedActivity = sportActivities[0]
-            }
+            //}
         }
     }
 

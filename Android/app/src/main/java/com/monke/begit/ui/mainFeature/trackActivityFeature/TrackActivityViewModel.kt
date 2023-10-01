@@ -60,6 +60,10 @@ class TrackActivityViewModel(
         }
     }
 
+    fun setMoneyEarned(money: Int) {
+        _moneyEarned.value = money
+    }
+
     fun setSportActivityState(state: SportActivityState) {
         _sportActivityState.value = state
     }

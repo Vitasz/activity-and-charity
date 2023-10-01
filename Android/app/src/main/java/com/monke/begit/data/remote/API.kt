@@ -1,6 +1,9 @@
 package com.monke.begit.data.remote
 
 
+import com.monke.begit.data.remote.Fund
+import com.monke.begit.data.remote.PhysicalActivity
+import com.monke.begit.data.remote.UserTop
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -30,12 +33,14 @@ interface API {
 
     @GET("/get_fund_by_id")
     @Headers("Content-Type: application/json")
-    suspend fun getFundById(@Query("fundId") findId: Int): Response<String>
+    suspend fun getFundById(@Query("fundId") findId: Int): Response<Any?>
 
     @GET("/get_subdivision_by_id")
     @Headers("Content-Type: application/json")
-    suspend fun getSubdivisionById(@Query("subdivisionId") subdivisionId: Int): Response<String>
+    suspend fun getSubdivisionById(@Query("subdivisionId") subdivisionId: Int): Response<Any?>
 
+    data class RequestBodyRegister(var username:String, var password: String,
+                                   var email: String, var name: String)
     @POST("/register_user")
     @Headers("Content-Type: application/json")
     suspend fun registerUser(@Body body: PostUserRemote): Response<Unit>
@@ -44,6 +49,7 @@ interface API {
     @Headers("Content-Type: application/json")
     suspend fun registerSupervisor(@Body body: PostUserRemote): Response<Unit>
 
+    data class RequestBodyLogin(var username:String, var password: String)
     @POST("/login")
     @Headers("Content-Type: application/json")
     suspend fun loginUser(@Body body: LoginUserRemote): Response<GetUserRemote>
@@ -55,16 +61,16 @@ interface API {
     data class RequestBodySelectFund(var fundId: Int)
     @POST("/select_fund")
     @Headers("Content-Type: application/json")
-    suspend fun selectFund(@Body body: RequestBodySelectFund): Single<String>
+    suspend fun selectFund(@Body body: RequestBodySelectFund): Single<Any?>
 
     data class RequestBodySelectSubdivision(var subdivisionId:Int)
     @POST("/select_subdivision")
     @Headers("Content-Type: application/json")
-    suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Single<String>
+    suspend fun selectSubdivision(@Body body: RequestBodySelectSubdivision): Single<Any?>
 
 
     data class RequestBodyAddActivity(var typeId: Int, val value: Double, var data: String)
     @POST("/add_activity")
     @Headers("Content-Type: application/json")
-    suspend fun addActivity(@Body body: RequestBodyAddActivity): Single<String>
+    suspend fun addActivity(@Body body: RequestBodyAddActivity): Single<Any?>
 }
