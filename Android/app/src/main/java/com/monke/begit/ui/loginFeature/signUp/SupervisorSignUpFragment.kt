@@ -3,6 +3,7 @@ package com.monke.begit.ui.loginFeature.signUp
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +40,7 @@ class SupervisorSignUpFragment : Fragment() {
     ): View? {
         binding = FragmentSupervisorSignUpBinding.inflate(inflater, container, false)
         (activity?.application as App).appComponent.inject(this)
-        return inflater.inflate(R.layout.fragment_supervisor_sign_up, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

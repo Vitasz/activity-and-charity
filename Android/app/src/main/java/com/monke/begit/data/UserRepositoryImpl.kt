@@ -57,7 +57,10 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override suspend fun createSupervisor(): Result<Any?> {
-        val response = api.registerSupervisor(User.toRemote(user))
+        val ru = User.toRemote(user)
+        Log.d("UserRepo", ru.password)
+        val response = api.registerSupervisor(ru)
+
         return if (response.isSuccessful){
             Result.success(response.body())
         } else{

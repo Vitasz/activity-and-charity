@@ -55,7 +55,6 @@ class SupervisorSignUpViewModel (
     }
 
     fun signUp() {
-        Log.d("Shiza", "shizaaaaa")
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             val user = userRepository.getUser().copy(
