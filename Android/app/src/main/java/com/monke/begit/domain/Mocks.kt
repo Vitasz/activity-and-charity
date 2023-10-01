@@ -40,10 +40,3 @@ val mockedUsers = listOf(
         accountType = AccountType.Supervisor,
     )
 )
-
-val mockedActivities = listOf(
-    SportActivity("Бегит"),
-    SportActivity("Турнык"),
-    SportActivity("Пресс качат"),
-    SportActivity("Анжуманя"),
-)

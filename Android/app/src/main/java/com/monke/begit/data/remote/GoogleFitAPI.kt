@@ -23,6 +23,7 @@ import com.google.android.gms.fitness.result.SessionStopResult
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.monke.begit.MainActivity
+import com.monke.begit.di.AppScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,7 +33,6 @@ import java.time.ZoneId
 import java.util.UUID
 import java.util.concurrent.TimeUnit
 
-
 class GoogleFitAPI(val context: MainActivity) {
     private lateinit var fitnessOptions: FitnessOptions
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -40,7 +40,7 @@ class GoogleFitAPI(val context: MainActivity) {
     private lateinit var googleApiClient: GoogleApiClient
     private var currentSession: Session? = null
     private var listener: OnDataPointListener? = null
-    private var sessionSummary: Int = 0
+    var sessionSummary: Int = 0
     @SuppressLint("SetTextI18n")
     fun setupGoogleFit() {
 

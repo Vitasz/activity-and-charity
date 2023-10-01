@@ -46,11 +46,8 @@ class NetworkModule {
 
         CookieManager.getInstance().setAcceptCookie(true)
 
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
         return Retrofit.Builder().baseUrl(Constants.APIUrl)
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpBuilder.build())
             .build()
     }

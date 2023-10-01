@@ -27,7 +27,7 @@ import java.time.LocalDate
 
 private const val GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 1001
 class MainActivity : AppCompatActivity() {
-    private lateinit var googleFitAPI: GoogleFitAPI
+    lateinit var googleFitAPI: GoogleFitAPI
 
 
 
