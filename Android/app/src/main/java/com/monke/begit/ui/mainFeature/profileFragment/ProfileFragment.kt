@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
             AccountType.Supervisor -> getString(R.string.supervisor)
         }
 
-        binding?.txtSubdivision?.text = viewModel.user.subdivision.name
+        //binding?.txtSubdivision?.text = viewModel.user.subdivision.name
     }
 
 }

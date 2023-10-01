@@ -51,7 +51,6 @@ class SupervisorSignUpFragment : Fragment() {
 
         setupNameEditText()
         setupPasswordEditText()
-        setupSubdivisionNameEditText()
         setupSurnameEditText()
         setupRepeatedPasswordEditText()
 
@@ -127,18 +126,6 @@ class SupervisorSignUpFragment : Fragment() {
 
             override fun afterTextChanged(text: Editable?) {
                 text?.let { viewModel.repeatedPassword = text.toString() }
-            }
-        })
-    }
-
-    private fun setupSubdivisionNameEditText() {
-        binding?.inputSubdivisionName?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(text: Editable?) {
-                text?.let { viewModel.subdivisionName = text.toString() }
             }
         })
     }

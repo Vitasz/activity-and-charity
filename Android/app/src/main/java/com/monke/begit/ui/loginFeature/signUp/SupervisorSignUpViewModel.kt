@@ -1,5 +1,6 @@
 package com.monke.begit.ui.loginFeature.signUp
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -14,8 +15,7 @@ import java.util.UUID
 import javax.inject.Inject
 
 class SupervisorSignUpViewModel (
-    private val userRepository: UserRepository,
-    private val subdivisionRepository: SubdivisionRepository
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     var name = ""
@@ -38,11 +38,7 @@ class SupervisorSignUpViewModel (
             field = value
             checkDataForValid()
         }
-    var subdivisionName = ""
-        set(value) {
-            field = value
-            checkDataForValid()
-        }
+
 
     private val _dataValid = MutableStateFlow(false)
     val dataValid = _dataValid.asStateFlow()
@@ -55,50 +51,34 @@ class SupervisorSignUpViewModel (
                 surname.isNotEmpty() &&
                 password.isNotEmpty() &&
                 repeatedPassword.isNotEmpty() &&
-                subdivisionName.isNotEmpty() &&
                 password == repeatedPassword
     }
 
     fun signUp() {
+        Log.d("Shiza", "shizaaaaa")
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            var subdivision = Subdivision(
-                id = 0,
-                name = subdivisionName,
-                code = UUID.randomUUID().toString().substring(0, 8)
+            val user = userRepository.getUser().copy(
+                name = name,
+                surname = surname,
+                password = password,
             )
-            val subdivisionRequest = subdivisionRepository.createSubdivision(subdivision)
-            if (subdivisionRequest.isSuccess) {
-                subdivision = subdivisionRequest.getOrNull()!!
-                val user = userRepository.getUser().copy(
-                    name = name,
-                    surname = surname,
-                    password = password,
-                    subdivision = subdivision
-                )
-                userRepository.saveUser(user)
-                val creationRequest = userRepository.createUser()
-                if (creationRequest.isSuccess)
-                    _uiState.value = UiState.Success()
-                else
-                    _uiState.value = UiState.Error(creationRequest.exceptionOrNull()!!)
-            } else
-                _uiState.value = UiState.Error(subdivisionRequest.exceptionOrNull()!!)
-
+            userRepository.saveUser(user)
+            val creationRequest = userRepository.createSupervisor()
+            if (creationRequest.isSuccess)
+                _uiState.value = UiState.Success()
+            else
+                _uiState.value = UiState.Error(creationRequest.exceptionOrNull()!!)
         }
     }
 
-
     class Factory @Inject constructor(
         private val userRepository: UserRepository,
-        private val subdivisionRepository: SubdivisionRepository
     ): ViewModelProvider.Factory {
 
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return SupervisorSignUpViewModel(
                 userRepository = userRepository,
-                subdivisionRepository = subdivisionRepository
-
             ) as T
         }
     }

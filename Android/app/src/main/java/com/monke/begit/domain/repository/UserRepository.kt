@@ -12,7 +12,7 @@ interface UserRepository {
 
     suspend fun createUser(): Result<Any?>
     suspend fun createSupervisor(): Result<Any?>
-    suspend fun loginUser(): Result<Any?>
+    suspend fun loginUser(username: String, password: String): Result<Any?>
     suspend fun loginSupervisor(): Result<Any?>
 
 

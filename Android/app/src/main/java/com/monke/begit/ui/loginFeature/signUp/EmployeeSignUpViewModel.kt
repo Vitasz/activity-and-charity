@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 class EmployeeSignUpViewModel(
     private val userRepository: UserRepository,
-    private val subdivisionRepository: SubdivisionRepository
 ) : ViewModel() {
     var name = ""
         set(value) {
@@ -62,27 +61,17 @@ class EmployeeSignUpViewModel(
     fun signUp() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            val subdivisionRequest = subdivisionRepository.getSubdivisionByCode(subdivisionCode)
-            if (subdivisionRequest.isSuccess) {
-                val subdivision = subdivisionRequest.getOrNull()
-                if (subdivision == null) {
-                    _uiState.value = UiState.Error(NoSubdivisionFoundException())
-                    return@launch
-                }
-                val user = userRepository.getUser().copy(
-                    name = name,
-                    surname = surname,
-                    password = password,
-                    subdivision = subdivision
-                )
-                userRepository.saveUser(user)
-                val creationRequest = userRepository.createUser()
-                if (creationRequest.isSuccess)
-                    _uiState.value = UiState.Success()
-                else
-                    _uiState.value = UiState.Error(creationRequest.exceptionOrNull()!!)
-            } else
-                _uiState.value = UiState.Error(subdivisionRequest.exceptionOrNull()!!)
+            val user = userRepository.getUser().copy(
+                name = name,
+                surname = surname,
+                password = password
+            )
+            userRepository.saveUser(user)
+            val creationRequest = userRepository.createUser()
+            if (creationRequest.isSuccess)
+                _uiState.value = UiState.Success()
+            else
+                _uiState.value = UiState.Error(creationRequest.exceptionOrNull()!!)
 
         }
     }
@@ -96,8 +85,6 @@ class EmployeeSignUpViewModel(
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return EmployeeSignUpViewModel(
                 userRepository = userRepository,
-                subdivisionRepository = subdivisionRepository
-
             ) as T
         }
 
