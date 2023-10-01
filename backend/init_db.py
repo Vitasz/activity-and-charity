@@ -16,7 +16,19 @@ cur.execute("INSERT INTO supervisors(username, password, email, name) VALUES (?,
 )
 
 cur.execute("INSERT INTO types_activities(name, coefficient) VALUES (?, ?)",
-            ('Jogging', 1.0)
+            ('Бег', 1.0)
+)
+
+cur.execute("INSERT INTO types_activities(name, coefficient) VALUES (?, ?)",
+            ('Езда на велосипеде', 1.0)
+)
+
+cur.execute("INSERT INTO types_activities(name, coefficient) VALUES (?, ?)",
+            ('Прогулка', 1.0)
+)
+
+cur.execute("INSERT INTO types_activities(name, coefficient) VALUES (?, ?)",
+            ('Силовая тренировка', 1.0)
 )
 
 cur.execute("INSERT INTO activities(id_user, id_type, value, date) VALUES (?, ?, ?, ?)",
